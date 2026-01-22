@@ -3,176 +3,170 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing Sensitivity and Segmentation | Sean Dillard</title>
-  <meta name="description" content="Pricing analysis case study: PPL optimization for lead generation business with conversion funnel analysis, keyword segmentation, and geographic strategy.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Pricing Sensitivity and Segmentation | Sean Dillard">
-  <meta property="og:description" content="Pricing analysis featuring conversion funnel optimization, keyword segmentation, and revenue maximization.">
-  <meta property="og:type" content="article">
-  
-  <!-- Fonts -->
+  <title>Pricing Sensitivity & Segmentation | Sean Dillard</title>
+  <meta name="description" content="Pricing analysis case study: PPL optimization with conversion funnel analysis, keyword segmentation, and geographic strategy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#09090b;color:#fafafa;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    
+    .wrap{max-width:800px;margin:0 auto;padding:0 24px}
+    
+    /* Nav */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #27272a}
+    .nav-inner{max-width:1000px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-weight:600;font-size:0.9375rem}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:#a1a1aa;transition:color 0.2s}
+    .nav-links a:hover{color:#fafafa}
+    
+    /* Hero */
+    .case-hero{padding:120px 0 48px;border-bottom:1px solid #27272a}
+    .case-tags{display:flex;gap:6px;margin-bottom:16px}
+    .case-tags span{font-size:0.625rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#22c55e;background:rgba(34,197,94,0.1);padding:4px 10px;border-radius:3px}
+    .case-hero h1{font-size:2rem;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px}
+    .case-meta{font-size:0.875rem;color:#71717a}
+    
+    /* Content */
+    .case-content{padding:48px 0}
+    .case-section{margin-bottom:48px}
+    .case-section h2{font-size:1.125rem;font-weight:600;color:#22c55e;margin-bottom:16px;letter-spacing:-0.01em}
+    .case-section p{font-size:0.9375rem;color:#a1a1aa;margin-bottom:12px;line-height:1.7}
+    .case-section ul{list-style:none;padding:0}
+    .case-section li{font-size:0.9375rem;color:#a1a1aa;padding-left:20px;margin-bottom:10px;position:relative;line-height:1.6}
+    .case-section li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;background:#22c55e;border-radius:1px}
+    .case-section li strong{color:#fafafa;font-weight:500}
+    
+    /* PDF */
+    .pdf-wrap{background:#18181b;border:1px solid #27272a;border-radius:12px;overflow:hidden;margin:24px 0}
+    .pdf-wrap iframe{width:100%;height:500px;border:none;display:block}
+    
+    /* Downloads */
+    .downloads{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+    @media(max-width:600px){.downloads{grid-template-columns:1fr}}
+    .dl-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#18181b;border:1px solid #27272a;border-radius:8px;transition:border-color 0.2s}
+    .dl-card:hover{border-color:#3f3f46}
+    .dl-card svg{width:20px;height:20px;color:#22c55e;flex-shrink:0}
+    .dl-card-text{flex:1}
+    .dl-card-title{font-size:0.8125rem;font-weight:500}
+    .dl-card-type{font-size:0.6875rem;color:#71717a;text-transform:uppercase}
+    
+    /* Back */
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:500;color:#a1a1aa;margin-top:32px;padding:10px 16px;border:1px solid #27272a;border-radius:6px;transition:all 0.2s}
+    .back-link:hover{color:#fafafa;border-color:#3f3f46}
+    .back-link svg{width:14px;height:14px}
+    
+    /* Footer */
+    footer{border-top:1px solid #27272a;padding:40px 0;margin-top:48px}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-text{font-size:0.8125rem;color:#71717a}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:0.8125rem;color:#71717a;transition:color 0.2s}
+    .footer-links a:hover{color:#fafafa}
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Sean Dillard</a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Case Studies</a></li>
+        <li><a href="index.html">Work</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Case Hero -->
   <section class="case-hero">
-    <div class="container">
-      <div class="case-hero-inner">
-        <div class="case-card-tags">
-          <span class="tag tag-green">Pricing</span>
-          <span class="tag tag-navy">Segmentation</span>
-          <span class="tag">Revenue Optimization</span>
-        </div>
-        <h1>Pricing Sensitivity and Segmentation Analysis</h1>
-        <p class="case-hero-meta">3S Home Services · PPL Pricing Model · April 2023</p>
-      </div>
+    <div class="wrap">
+      <div class="case-tags"><span>Pricing</span><span>Segmentation</span><span>Revenue Optimization</span></div>
+      <h1>Pricing Sensitivity & Segmentation</h1>
+      <p class="case-meta">3S Home Services · PPL Pricing Model · April 2023</p>
     </div>
   </section>
 
-  <!-- Case Content -->
   <div class="case-content">
-    
-    <!-- Context -->
-    <section class="case-section">
-      <h2>Context</h2>
-      <p>
-        3S Home Services operates a lead generation platform for home improvement contractors, 
-        primarily in the roofing vertical. The business sells leads on a pay per lead (PPL) basis, 
-        where pricing depends on lead quality as measured by downstream conversion to appointments 
-        and sales.
-      </p>
-      <p>
-        This analysis developed a data driven pricing framework to optimize PPL rates across 
-        different lead segments, balancing revenue capture with partner retention.
-      </p>
-    </section>
+    <div class="wrap">
+      
+      <section class="case-section">
+        <h2>Context</h2>
+        <p>3S Home Services operates a lead generation platform for home improvement contractors, primarily in the roofing vertical. The business sells leads on a pay-per-lead (PPL) basis, where pricing depends on lead quality as measured by downstream conversion to appointments and sales.</p>
+        <p>This analysis developed a data-driven pricing framework to optimize PPL rates across different lead segments, balancing revenue capture with partner retention.</p>
+      </section>
 
-    <!-- Problem -->
-    <section class="case-section">
-      <h2>Problem</h2>
-      <ul>
-        <li>Flat PPL pricing left money on the table for high quality lead segments</li>
-        <li>Appointment rate data showed significant variance by keyword type, channel, and season</li>
-        <li>Partner needed defensible pricing methodology to justify rate increases</li>
-        <li>Limited historical data created uncertainty around conversion assumptions</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Problem</h2>
+        <ul>
+          <li>Flat PPL pricing left money on the table for high-quality lead segments</li>
+          <li>Appointment rate data showed significant variance by keyword type, channel, and season</li>
+          <li>Partner needed defensible pricing methodology to justify rate increases</li>
+          <li>Limited historical data created uncertainty around conversion assumptions</li>
+        </ul>
+      </section>
 
-    <!-- Approach -->
-    <section class="case-section">
-      <h2>Approach</h2>
-      <ul>
-        <li>Built PPL pricing formula: Lead × Appointment Rate × Conversion × Average Sale × Margin</li>
-        <li>Analyzed 16 months of lead and appointment data to identify conversion patterns</li>
-        <li>Segmented leads by keyword intent (local vs generic) to isolate quality signals</li>
-        <li>Mapped channel and geographic performance to identify expansion opportunities</li>
-        <li>Developed tiered pricing structure with built in data collection mechanisms</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Approach</h2>
+        <ul>
+          <li>Built PPL pricing formula: Lead × Appointment Rate × Conversion × Average Sale × Margin</li>
+          <li>Analyzed 16 months of lead and appointment data to identify conversion patterns</li>
+          <li>Segmented leads by keyword intent (local vs. generic) to isolate quality signals</li>
+          <li>Mapped channel and geographic performance to identify expansion opportunities</li>
+          <li>Developed tiered pricing structure with built-in data collection mechanisms</li>
+        </ul>
+      </section>
 
-    <!-- Key Findings -->
-    <section class="case-section">
-      <h2>Key Findings</h2>
-      <ul>
-        <li><strong>Premium PPL achievable:</strong> $90 flat rate supported by 8.4% appointment rate and 39% conversion; conservative vs Q3 data showing 13% appointment rates</li>
-        <li><strong>Local keywords convert 38% higher:</strong> 11% vs 8% appointment rate, supporting $110 PPL for local segment vs $80 for generic</li>
-        <li><strong>Segmented pricing adds $30K revenue:</strong> Incremental value from quality based tiering vs flat rate</li>
-        <li><strong>Seasonality risk requires monitoring:</strong> Q3 skew in appointment data; rapid adjustment capability needed</li>
-        <li><strong>Channel optimization opportunity:</strong> Organic and social outperform paid search; investment reallocation recommended</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Key Findings</h2>
+        <ul>
+          <li><strong>Premium PPL achievable:</strong> $90 flat rate supported by 8.4% appointment rate and 39% conversion; conservative vs. Q3 data showing 13% appointment rates</li>
+          <li><strong>Local keywords convert 38% higher:</strong> 11% vs. 8% appointment rate, supporting $110 PPL for local segment vs. $80 for generic</li>
+          <li><strong>Segmented pricing adds $30K revenue:</strong> Incremental value from quality-based tiering vs. flat rate</li>
+          <li><strong>Seasonality risk requires monitoring:</strong> Q3 skew in appointment data; rapid adjustment capability needed</li>
+          <li><strong>Channel optimization opportunity:</strong> Organic and social outperform paid search; investment reallocation recommended</li>
+        </ul>
+      </section>
 
-    <!-- Outputs -->
-    <section class="case-section">
-      <h2>Outputs</h2>
-      <ul>
-        <li>PPL pricing formula with clear input assumptions</li>
-        <li>Segmentation framework: local vs generic, channel, geography</li>
-        <li>Quality tier matrix for dynamic pricing</li>
-        <li>Geographic expansion roadmap with priority markets</li>
-        <li>Next steps for data collection and model refinement</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Analysis Deck</h2>
+        <div class="pdf-wrap">
+          <iframe src="assets/SPD_3S_Pricing_Analysis.pdf" title="Pricing Analysis"></iframe>
+        </div>
+      </section>
 
-    <!-- Embedded PDF -->
-    <section class="case-section">
-      <h2>Analysis Deck</h2>
-      <div class="pdf-embed">
-        <iframe src="assets/SPD_3S_Pricing_Analysis.pdf" title="3S Pricing Analysis"></iframe>
-      </div>
-    </section>
+      <section class="case-section">
+        <h2>Downloads</h2>
+        <div class="downloads" style="grid-template-columns:1fr">
+          <a href="assets/SPD_3S_Pricing_Analysis.pdf" class="dl-card" target="_blank">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <div class="dl-card-text"><div class="dl-card-title">Pricing Analysis</div><div class="dl-card-type">PDF</div></div>
+          </a>
+        </div>
+      </section>
 
-    <!-- Downloads -->
-    <section class="case-section">
-      <h2>Downloads</h2>
-      <div class="download-grid">
-        <a href="assets/SPD_3S_Pricing_Analysis.pdf" class="download-card" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          <div class="download-card-text">
-            <div class="download-card-title">Pricing Analysis</div>
-            <div class="download-card-type">PDF</div>
-          </div>
-        </a>
-      </div>
-    </section>
+      <section class="case-section">
+        <h2>Technical Notes</h2>
+        <p>The pricing formula used here is standard for performance marketing: PPL = Lead × Appointment Rate × Conversion Rate × Average Sale × Desired Margin. The key insight is that appointment rate varies significantly by lead source, making segmented pricing more accurate than flat rates.</p>
+        <p>The analysis flagged data limitations explicitly: heavy Q3 weighting in appointment data, potential lag in partner reporting, and geographic concentration risk. The recommended $90 PPL is conservative vs. peak season data specifically to build in margin of safety while collecting more precise data.</p>
+      </section>
 
-    <!-- Methodology Note -->
-    <section class="case-section">
-      <h2>Technical Notes</h2>
-      <p>
-        The pricing formula used here is standard for performance marketing: PPL = Lead × Appointment Rate × 
-        Conversion Rate × Average Sale × Desired Margin. The key insight is that appointment rate 
-        varies significantly by lead source, making segmented pricing more accurate than flat rates.
-      </p>
-      <p>
-        The analysis flagged data limitations explicitly: heavy Q3 weighting in appointment data, 
-        potential lag in partner reporting, and geographic concentration risk. The recommended $90 
-        PPL is conservative vs peak season data specifically to build in margin of safety while 
-        collecting more precise data.
-      </p>
-    </section>
-
-    <!-- Back Link -->
-    <div class="mt-4">
-      <a href="index.html" class="btn btn-secondary">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 16px; height: 16px;">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-        </svg>
+      <a href="index.html" class="back-link">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
         Back to Case Studies
       </a>
     </div>
-
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
+  <footer>
+    <div class="wrap">
       <div class="footer-inner">
-        <p class="footer-text">© 2025 Sean Dillard. Built with purpose.</p>
+        <p class="footer-text">© 2025 Sean Dillard</p>
         <div class="footer-links">
+          <a href="mailto:seandillard@gmail.com">seandillard@gmail.com</a>
           <a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a>
-          <a href="mailto:seandillard@gmail.com">Email</a>
-          <a href="assets/SPD_Resume_2025.pdf" target="_blank">Resume</a>
         </div>
       </div>
     </div>

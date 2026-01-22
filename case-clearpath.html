@@ -4,203 +4,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Behavioral Health Operating Review | Sean Dillard</title>
-  <meta name="description" content="FP&A case study: Full year variance analysis with revenue and EBITDA bridges, scenario modeling, and strategic recommendations for a behavioral health company.">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Behavioral Health Operating Review | Sean Dillard">
-  <meta property="og:description" content="FP&A case study featuring variance analysis, scenario modeling, and driver based Excel model.">
-  <meta property="og:type" content="article">
-  
-  <!-- Fonts -->
+  <meta name="description" content="FP&A case study: variance analysis, scenario modeling, and driver-based Excel model for behavioral health company.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{font-size:16px;scroll-behavior:smooth}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#09090b;color:#fafafa;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    
+    .wrap{max-width:800px;margin:0 auto;padding:0 24px}
+    
+    /* Nav */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #27272a}
+    .nav-inner{max-width:1000px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{font-weight:600;font-size:0.9375rem}
+    .nav-links{display:flex;gap:28px;list-style:none}
+    .nav-links a{font-size:0.875rem;color:#a1a1aa;transition:color 0.2s}
+    .nav-links a:hover{color:#fafafa}
+    
+    /* Hero */
+    .case-hero{padding:120px 0 48px;border-bottom:1px solid #27272a}
+    .case-tags{display:flex;gap:6px;margin-bottom:16px}
+    .case-tags span{font-size:0.625rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#22c55e;background:rgba(34,197,94,0.1);padding:4px 10px;border-radius:3px}
+    .case-hero h1{font-size:2rem;font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px}
+    .case-meta{font-size:0.875rem;color:#71717a}
+    
+    /* Content */
+    .case-content{padding:48px 0}
+    .case-section{margin-bottom:48px}
+    .case-section h2{font-size:1.125rem;font-weight:600;color:#22c55e;margin-bottom:16px;letter-spacing:-0.01em}
+    .case-section p{font-size:0.9375rem;color:#a1a1aa;margin-bottom:12px;line-height:1.7}
+    .case-section ul{list-style:none;padding:0}
+    .case-section li{font-size:0.9375rem;color:#a1a1aa;padding-left:20px;margin-bottom:10px;position:relative;line-height:1.6}
+    .case-section li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;background:#22c55e;border-radius:1px}
+    .case-section li strong{color:#fafafa;font-weight:500}
+    
+    /* PDF */
+    .pdf-wrap{background:#18181b;border:1px solid #27272a;border-radius:12px;overflow:hidden;margin:24px 0}
+    .pdf-wrap iframe{width:100%;height:500px;border:none;display:block}
+    
+    /* Downloads */
+    .downloads{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+    @media(max-width:600px){.downloads{grid-template-columns:1fr}}
+    .dl-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#18181b;border:1px solid #27272a;border-radius:8px;transition:border-color 0.2s}
+    .dl-card:hover{border-color:#3f3f46}
+    .dl-card svg{width:20px;height:20px;color:#22c55e;flex-shrink:0}
+    .dl-card-text{flex:1}
+    .dl-card-title{font-size:0.8125rem;font-weight:500}
+    .dl-card-type{font-size:0.6875rem;color:#71717a;text-transform:uppercase}
+    
+    /* Back */
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:500;color:#a1a1aa;margin-top:32px;padding:10px 16px;border:1px solid #27272a;border-radius:6px;transition:all 0.2s}
+    .back-link:hover{color:#fafafa;border-color:#3f3f46}
+    .back-link svg{width:14px;height:14px}
+    
+    /* Footer */
+    footer{border-top:1px solid #27272a;padding:40px 0;margin-top:48px}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .footer-text{font-size:0.8125rem;color:#71717a}
+    .footer-links{display:flex;gap:20px}
+    .footer-links a{font-size:0.8125rem;color:#71717a;transition:color 0.2s}
+    .footer-links a:hover{color:#fafafa}
+  </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Sean Dillard</a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Case Studies</a></li>
+        <li><a href="index.html">Work</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a></li>
       </ul>
     </div>
   </nav>
 
-  <!-- Case Hero -->
   <section class="case-hero">
-    <div class="container">
-      <div class="case-hero-inner">
-        <div class="case-card-tags">
-          <span class="tag tag-green">Variance Analysis</span>
-          <span class="tag tag-navy">Scenarios</span>
-          <span class="tag">FP&A Model</span>
-        </div>
-        <h1>Behavioral Health Operating Review and FP&A Model</h1>
-        <p class="case-hero-meta">Simulated Company · Full Year Analysis · January 2025</p>
-      </div>
+    <div class="wrap">
+      <div class="case-tags"><span>Variance Analysis</span><span>Scenarios</span><span>FP&A Model</span></div>
+      <h1>Behavioral Health Operating Review</h1>
+      <p class="case-meta">Simulated Company · Full Year Analysis · January 2025</p>
     </div>
   </section>
 
-  <!-- Case Content -->
   <div class="case-content">
-    
-    <!-- Context -->
-    <section class="case-section">
-      <h2>Context</h2>
-      <p>
-        Clearpath Behavioral Health is a simulated intensive outpatient program (IOP) operator 
-        in Arkansas with two clinic locations. The company missed its FY1 revenue budget by 6% 
-        and EBITDA by 15%, requiring analysis of root causes and strategic recommendations for FY2.
-      </p>
-      <p>
-        This case study demonstrates the full FP&A toolkit: variance decomposition, driver based 
-        modeling, scenario analysis, and executive ready reporting.
-      </p>
-    </section>
+    <div class="wrap">
+      
+      <section class="case-section">
+        <h2>Context</h2>
+        <p>Clearpath Behavioral Health is a simulated intensive outpatient program (IOP) operator in Arkansas with two clinic locations. The company missed its FY1 revenue budget by 6% and EBITDA by 15%, requiring analysis of root causes and strategic recommendations for FY2.</p>
+        <p>This case demonstrates the full FP&A toolkit: variance decomposition, driver-based modeling, scenario analysis, and executive-ready reporting.</p>
+      </section>
 
-    <!-- Problem -->
-    <section class="case-section">
-      <h2>Problem</h2>
-      <ul>
-        <li>Revenue missed budget by $296K (6%), driven by volume and payer mix headwinds</li>
-        <li>EBITDA margin compressed from 29.6% target to 26.8% actual</li>
-        <li>Leadership needed clarity on root causes and quantified path to recovery</li>
-        <li>Board requested scenario analysis with probability weighted expectations</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Problem</h2>
+        <ul>
+          <li>Revenue missed budget by $296K (6%), driven by volume and payer mix headwinds</li>
+          <li>EBITDA margin compressed from 29.6% target to 26.8% actual</li>
+          <li>Leadership needed clarity on root causes and quantified path to recovery</li>
+          <li>Board requested scenario analysis with probability-weighted expectations</li>
+        </ul>
+      </section>
 
-    <!-- Approach -->
-    <section class="case-section">
-      <h2>Approach</h2>
-      <ul>
-        <li>Built driver based P&L model connecting operating metrics (sessions, show rate, payer mix) to financial outcomes</li>
-        <li>Decomposed revenue variance into volume, rate, and mix components with reconciling bridges</li>
-        <li>Constructed three scenarios (downside, base, upside) with explicit driver assumptions</li>
-        <li>Quantified four initiatives with defensible ROI calculations</li>
-        <li>Packaged findings in BCG style operating review deck for board presentation</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Approach</h2>
+        <ul>
+          <li>Built driver-based P&L model connecting operating metrics (sessions, show rate, payer mix) to financial outcomes</li>
+          <li>Decomposed revenue variance into volume, rate, and mix components with reconciling bridges</li>
+          <li>Constructed three scenarios (downside, base, upside) with explicit driver assumptions</li>
+          <li>Quantified four initiatives with defensible ROI calculations</li>
+          <li>Packaged findings in BCG-style operating review deck for board presentation</li>
+        </ul>
+      </section>
 
-    <!-- Key Findings -->
-    <section class="case-section">
-      <h2>Key Findings</h2>
-      <ul>
-        <li><strong>Volume drove two thirds of revenue miss:</strong> 1,018 fewer sessions delivered, split between admissions shortfall and show rate deterioration (88% vs 90% target)</li>
-        <li><strong>Payer mix shift reduced blended rate:</strong> 2 point drift toward Medicaid reduced average reimbursement by $5/session</li>
-        <li><strong>Cost discipline preserved margin:</strong> $75K favorable variance from delayed hiring and lower variable costs offset 25% of revenue shortfall</li>
-        <li><strong>Show rate intervention offers highest ROI:</strong> 2 point improvement yields $40K EBITDA with minimal investment</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Key Findings</h2>
+        <ul>
+          <li><strong>Volume drove two-thirds of revenue miss:</strong> 1,018 fewer sessions delivered, split between admissions shortfall and show rate deterioration</li>
+          <li><strong>Payer mix shift reduced blended rate:</strong> 2-point drift toward Medicaid reduced average reimbursement by $5/session</li>
+          <li><strong>Cost discipline preserved margin:</strong> $75K favorable variance from delayed hiring offset 25% of revenue shortfall</li>
+          <li><strong>Show rate intervention offers highest ROI:</strong> 2-point improvement yields $40K EBITDA with minimal investment</li>
+        </ul>
+      </section>
 
-    <!-- Outputs -->
-    <section class="case-section">
-      <h2>Outputs</h2>
-      <ul>
-        <li>10 slide operating review deck with revenue and EBITDA bridges</li>
-        <li>Driver based Excel model with scenario toggles and sensitivity analysis</li>
-        <li>FY2 forecast with probability weighted EBITDA expectation</li>
-        <li>Initiative roadmap with owners, timelines, and quantified impact</li>
-      </ul>
-    </section>
+      <section class="case-section">
+        <h2>Operating Review Deck</h2>
+        <div class="pdf-wrap">
+          <iframe src="assets/Clearpath_FY1_Operating_Review.pdf" title="Operating Review"></iframe>
+        </div>
+      </section>
 
-    <!-- Embedded PDF -->
-    <section class="case-section">
-      <h2>Operating Review Deck</h2>
-      <div class="pdf-embed">
-        <iframe src="assets/Clearpath_FY1_Operating_Review.pdf" title="Clearpath Operating Review"></iframe>
-      </div>
-    </section>
+      <section class="case-section">
+        <h2>Downloads</h2>
+        <div class="downloads">
+          <a href="assets/Clearpath_FY1_Operating_Review.pdf" class="dl-card" target="_blank">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <div class="dl-card-text"><div class="dl-card-title">Operating Review</div><div class="dl-card-type">PDF</div></div>
+          </a>
+          <a href="assets/Clearpath_FY1_Operating_Review.pptx" class="dl-card" target="_blank">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <div class="dl-card-text"><div class="dl-card-title">Operating Review</div><div class="dl-card-type">PPTX</div></div>
+          </a>
+          <a href="assets/clearpath_raw_data.xlsx" class="dl-card" target="_blank">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div class="dl-card-text"><div class="dl-card-title">Raw Data Model</div><div class="dl-card-type">XLSX</div></div>
+          </a>
+          <a href="assets/Methodology_Behind_The_Scenes.pdf" class="dl-card" target="_blank">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            <div class="dl-card-text"><div class="dl-card-title">Methodology</div><div class="dl-card-type">PDF</div></div>
+          </a>
+        </div>
+      </section>
 
-    <!-- Downloads -->
-    <section class="case-section">
-      <h2>Downloads</h2>
-      <div class="download-grid">
-        <a href="assets/Clearpath_FY1_Operating_Review.pdf" class="download-card" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          <div class="download-card-text">
-            <div class="download-card-title">Operating Review</div>
-            <div class="download-card-type">PDF</div>
-          </div>
-        </a>
-        <a href="assets/Clearpath_FY1_Operating_Review.pptx" class="download-card" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          <div class="download-card-text">
-            <div class="download-card-title">Operating Review</div>
-            <div class="download-card-type">PPTX</div>
-          </div>
-        </a>
-        <a href="assets/clearpath_raw_data.xlsx" class="download-card" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          <div class="download-card-text">
-            <div class="download-card-title">Raw Data Model</div>
-            <div class="download-card-type">XLSX</div>
-          </div>
-        </a>
-        <a href="assets/Methodology_Behind_The_Scenes.pdf" class="download-card" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-          </svg>
-          <div class="download-card-text">
-            <div class="download-card-title">Methodology</div>
-            <div class="download-card-type">PDF</div>
-          </div>
-        </a>
-      </div>
-    </section>
+      <section class="case-section">
+        <h2>Methodology Note</h2>
+        <p>Clearpath is a simulated company. The data was generated programmatically using Python to create a realistic but fictional behavioral health operator. All numbers derive from a small set of core assumptions that cascade through the model deterministically.</p>
+        <p>This ensures every variance bridge balances, every reconciliation foots, and the story coheres. Industry benchmarks for reimbursement rates, staffing ratios, and margins are based on real-world data from CMS fee schedules and healthcare M&A comps.</p>
+      </section>
 
-    <!-- Methodology Note -->
-    <section class="case-section">
-      <h2>A Note on Methodology</h2>
-      <p>
-        Clearpath is a simulated company. The data was generated programmatically using Python 
-        to create a realistic but fictional behavioral health operator. All numbers are derived 
-        from a small set of core assumptions (staffing, reimbursement rates, show rates) that 
-        cascade through the model deterministically.
-      </p>
-      <p>
-        This approach ensures every variance bridge balances, every reconciliation foots, and 
-        the story coheres. The methodology deck (linked above) explains the data generation 
-        process in detail, including the Python code patterns used.
-      </p>
-      <p>
-        Industry benchmarks for reimbursement rates, staffing ratios, and margins are based on 
-        real world data from CMS fee schedules, SAMHSA reports, and healthcare M&A comps.
-      </p>
-    </section>
-
-    <!-- Back Link -->
-    <div class="mt-4">
-      <a href="index.html" class="btn btn-secondary">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width: 16px; height: 16px;">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
-        </svg>
+      <a href="index.html" class="back-link">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
         Back to Case Studies
       </a>
     </div>
-
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
+  <footer>
+    <div class="wrap">
       <div class="footer-inner">
-        <p class="footer-text">© 2025 Sean Dillard. Built with purpose.</p>
+        <p class="footer-text">© 2025 Sean Dillard</p>
         <div class="footer-links">
+          <a href="mailto:seandillard@gmail.com">seandillard@gmail.com</a>
           <a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a>
-          <a href="mailto:seandillard@gmail.com">Email</a>
-          <a href="assets/SPD_Resume_2025.pdf" target="_blank">Resume</a>
         </div>
       </div>
     </div>
