@@ -1,0 +1,136 @@
+:root{
+  --bg:#0b1220;
+  --panel:#0f1a2d;
+  --text:#e7eefc;
+  --muted:#b7c3da;
+  --border:rgba(231,238,252,.12);
+  --accent:#6aa6ff;
+  --accent2:#7ef0c6;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --radius: 18px;
+  --max: 1040px;
+}
+
+html, body { height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: radial-gradient(1200px 800px at 20% 0%, rgba(106,166,255,.18), transparent 55%),
+              radial-gradient(900px 700px at 80% 10%, rgba(126,240,198,.12), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+}
+
+a{ color:inherit; }
+
+.wrap{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 56px 20px 72px;
+}
+
+h1{
+  margin:0;
+  font-size: 40px;
+  letter-spacing: -0.02em;
+}
+
+.sub{
+  max-width: 720px;
+  color: var(--muted);
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.section-title{
+  margin: 34px 0 14px;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.case{
+  grid-column: span 6;
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(6px);
+}
+
+.case h2{
+  margin: 2px 0 8px;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.case p{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.tagrow{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom: 10px;
+}
+
+.tag{
+  font-size: 12px;
+  color: rgba(231,238,252,.85);
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.03);
+}
+
+.links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  text-decoration:none;
+  font-weight: 600;
+  font-size: 14px;
+  background: rgba(106,166,255,.10);
+}
+
+.btn:hover{ border-color: rgba(106,166,255,.55); }
+
+.btn.secondary{
+  background: rgba(255,255,255,.04);
+  font-weight: 600;
+}
+
+.foot{
+  margin-top: 46px;
+  color: rgba(231,238,252,.65);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+@media (max-width: 860px){
+  h1{ font-size: 34px; }
+  .case{ grid-column: span 12; }
+}
