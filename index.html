@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sean Dillard | FP&A and Strategic Finance</title>
-    <meta name="description" content="Strategic finance professional combining Duke Mathematics, Stanford MBA, and BCG rigor. Specializing in driver-based planning, AI-augmented forecasting, and FP&A transformation.">
+    <meta name="description" content="Strategic finance professional combining Duke Mathematics, Stanford MBA, and BCG rigor. Specializing in driver-based planning, variance analysis, and FP&A transformation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -15,8 +15,6 @@
             --slate: #334155;
             --accent: #10b981;
             --accent-light: #34d399;
-            --accent-dim: #059669;
-            --gold: #f59e0b;
             --white: #f8fafc;
             --gray: #94a3b8;
             --border: rgba(255,255,255,0.08);
@@ -155,7 +153,7 @@
         .hero-subtitle {
             font-size: 1.15rem;
             color: var(--gray);
-            max-width: 550px;
+            max-width: 580px;
             margin-bottom: 2rem;
             line-height: 1.7;
         }
@@ -222,6 +220,11 @@
             color: var(--accent-light);
         }
         
+        .btn-small {
+            padding: 0.6rem 1.1rem;
+            font-size: 0.85rem;
+        }
+        
         /* Section styles */
         section { padding: 5rem 0; }
         
@@ -246,92 +249,7 @@
         .section-subtitle {
             color: var(--gray);
             font-size: 1rem;
-        }
-        
-        /* Featured Offering - FP&A Masterclass */
-        .featured {
-            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .featured-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 3rem;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 16px;
-        }
-        
-        .featured-content h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-        
-        .featured-content p {
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-        
-        .featured-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .stat {
-            text-align: center;
-            padding: 1rem;
-            background: var(--navy);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-        
-        .stat-number {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-light);
-        }
-        
-        .stat-label {
-            font-size: 0.75rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .featured-modules {
-            background: var(--navy);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-        }
-        
-        .module-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.75rem;
-        }
-        
-        .module-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-        
-        .module-item::before {
-            content: '→';
-            color: var(--accent);
-            font-weight: bold;
+            max-width: 600px;
         }
         
         /* Case Studies */
@@ -452,6 +370,63 @@
             color: var(--gray);
         }
         
+        /* White Paper CTA */
+        .whitepaper-section {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+            border-top: 1px solid rgba(16, 185, 129, 0.2);
+            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .whitepaper-card {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .whitepaper-content h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .whitepaper-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            max-width: 550px;
+        }
+        
+        .whitepaper-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .topic-tag {
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            background: var(--navy);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--gray);
+        }
+        
+        .free-badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-light);
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        
         /* CTA Section */
         .cta-section {
             text-align: center;
@@ -520,7 +495,7 @@
         
         .footer-links a:hover { color: var(--accent-light); }
         
-        /* Mobile Nav */
+        /* Mobile */
         .mobile-toggle {
             display: none;
             background: none;
@@ -530,28 +505,19 @@
             cursor: pointer;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-toggle { display: block; }
-            
-            .featured-card {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 1.5rem;
-            }
-            
-            .featured-stats {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.75rem;
-            }
-            
-            .module-list { grid-template-columns: 1fr; }
             
             .hero-cta { flex-direction: column; }
             .btn { width: 100%; justify-content: center; }
             
             .cases-grid { grid-template-columns: 1fr; }
+            
+            .whitepaper-card {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -562,7 +528,7 @@
             <button class="mobile-toggle">☰</button>
             <ul class="nav-links">
                 <li><a href="#work">Work</a></li>
-                <li><a href="#toolkit">FP&A Toolkit</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a></li>
                 <li><a href="mailto:seandillard@gmail.com" class="nav-cta">Get in Touch</a></li>
@@ -575,7 +541,7 @@
             <div class="hero-content">
                 <div class="hero-badge">Available for FP&A & Finance Roles</div>
                 <h1>I build models that <span class="highlight">drive decisions</span> and forecasts that <span class="highlight">actually work.</span></h1>
-                <p class="hero-subtitle">Strategy consulting rigor meets hands-on execution. Driver-based planning, AI-augmented forecasting, and variance analysis that surfaces the "so what" — not just the what.</p>
+                <p class="hero-subtitle">Strategy consulting rigor meets hands-on execution. Driver-based planning, variance analysis that surfaces the "so what," and the judgment to know when AI helps forecasting—and when it doesn't.</p>
                 <div class="hero-credentials">
                     <span class="credential"><strong>Duke</strong> Mathematics</span>
                     <span class="credential"><strong>Stanford</strong> MBA</span>
@@ -583,65 +549,8 @@
                     <span class="credential"><strong>Red Ventures</strong> $15M Product</span>
                 </div>
                 <div class="hero-cta">
-                    <a href="#toolkit" class="btn btn-primary">View FP&A Toolkit →</a>
-                    <a href="assets/SPD_Resume_2025.pdf" class="btn btn-secondary">Download Resume</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="featured" id="toolkit">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Featured Resource</p>
-                <h2 class="section-title">Ultra Advanced FP&A Masterclass</h2>
-                <p class="section-subtitle">A comprehensive curriculum I developed covering modern FP&A from driver-based planning to AI-powered forecasting.</p>
-            </div>
-            
-            <div class="featured-card">
-                <div class="featured-content">
-                    <h3>From Excel Jockey to Strategic Business Partner</h3>
-                    <p>This isn't another budgeting tutorial. It's a complete transformation framework covering the skills that separate world-class FP&A from spreadsheet maintenance — including the AI/ML capabilities that are reshaping the function.</p>
-                    
-                    <div class="featured-stats">
-                        <div class="stat">
-                            <div class="stat-number">12</div>
-                            <div class="stat-label">Modules</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">60+</div>
-                            <div class="stat-label">Hours Content</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number">23%</div>
-                            <div class="stat-label">AI Forecast Lift*</div>
-                        </div>
-                    </div>
-                    
-                    <p style="font-size: 0.75rem; color: var(--gray); margin-bottom: 1.5rem;">*Based on FP&A Trends research: teams using AI/ML rate forecasts as "great/good" 65% vs 42% for those without.</p>
-                    
-                    <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                        <a href="assets/Ultra_Advanced_FPA_Masterclass.docx" class="btn btn-primary" download>Download Curriculum</a>
-                        <a href="assets/Ultra_Advanced_FPA_Toolkit.xlsx" class="btn btn-secondary" download>Get Excel Toolkit</a>
-                    </div>
-                </div>
-                
-                <div class="featured-modules">
-                    <h4 style="margin-bottom: 1rem; font-size: 0.9rem; color: var(--gray);">What's Covered:</h4>
-                    <div class="module-list">
-                        <div class="module-item">Modern FP&A Operating Model</div>
-                        <div class="module-item">Driver-Based Planning</div>
-                        <div class="module-item">Rolling Forecasts</div>
-                        <div class="module-item">Variance Analysis</div>
-                        <div class="module-item">Excel Mastery</div>
-                        <div class="module-item">SQL & Python for FP&A</div>
-                        <div class="module-item">Modern Platforms (Anaplan, Pigment)</div>
-                        <div class="module-item">AI & Machine Learning</div>
-                        <div class="module-item">Monte Carlo Simulation</div>
-                        <div class="module-item">KPI Design</div>
-                        <div class="module-item">Business Partnership</div>
-                        <div class="module-item">Executive Communication</div>
-                    </div>
+                    <a href="#work" class="btn btn-primary">View Case Studies →</a>
+                    <a href="assets/SPD_Resume_2025.pdf" class="btn btn-secondary" target="_blank">Resume (PDF)</a>
                 </div>
             </div>
         </div>
@@ -681,23 +590,23 @@
                     </div>
                 </a>
                 
-                <a href="case-forecasting.html" class="case-card">
+                <a href="case-rolling-forecast.html" class="case-card">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=360&fit=crop&q=75" alt="Forecasting" class="case-image">
                     <div class="case-content">
                         <div class="case-tags">
-                            <span class="tag">AI/ML</span>
                             <span class="tag">Forecasting</span>
+                            <span class="tag">Process Design</span>
                         </div>
-                        <h3 class="case-title">AI-Augmented Revenue Forecasting</h3>
-                        <p class="case-desc">Comparison of statistical vs. machine learning approaches with Prophet, ARIMA, and driver-based methods.</p>
-                        <span class="case-link">Coming Soon →</span>
+                        <h3 class="case-title">Rolling Forecast Implementation</h3>
+                        <p class="case-desc">Design and implementation of a rolling forecast process with driver-based logic and accuracy tracking.</p>
+                        <span class="case-link">View Case →</span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
     
-    <section class="skills-section">
+    <section class="skills-section" id="skills">
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Capabilities</p>
@@ -709,22 +618,22 @@
                 <div class="skill-card">
                     <div class="skill-icon">📊</div>
                     <h4>Driver-Based Modeling</h4>
-                    <p>Connect operational levers to financial outcomes. Build models that flex with assumptions, not ones that break.</p>
+                    <p>Connect operational levers to financial outcomes. Models that flex with assumptions, not ones that break.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🎯</div>
                     <h4>Variance Analysis</h4>
-                    <p>Price/volume/mix decomposition that answers "why" — not just "what." Bridges that balance to the penny.</p>
+                    <p>Price/volume/mix decomposition that answers "why"—not just "what." Bridges that balance to the penny.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🔮</div>
                     <h4>Rolling Forecasts</h4>
-                    <p>Continuous planning that adapts to reality. MAPE tracking, bias correction, and forecast value-added measurement.</p>
+                    <p>Continuous planning that adapts to reality. MAPE tracking, bias correction, and process design.</p>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
-                    <h4>AI/ML Forecasting</h4>
-                    <p>Prophet, XGBoost, and statistical methods. Know when ML beats judgment — and when it doesn't.</p>
+                    <div class="skill-icon">📈</div>
+                    <h4>Scenario Planning</h4>
+                    <p>Build models that answer "what if?" — not just "what happened." Stress testing that informs strategy.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">⚡</div>
@@ -740,10 +649,29 @@
         </div>
     </section>
     
+    <section class="whitepaper-section" id="outlook">
+        <div class="container">
+            <div class="whitepaper-card">
+                <div class="whitepaper-content">
+                    <h3>FP&A Outlook 2026 <span class="free-badge">Free</span></h3>
+                    <p>A practitioner's perspective on where the function is headed—from AI agents and continuous planning to the platform landscape and the skills that will matter most.</p>
+                    <div class="whitepaper-topics">
+                        <span class="topic-tag">AI in FP&A</span>
+                        <span class="topic-tag">Rolling Forecasts</span>
+                        <span class="topic-tag">Platform Landscape</span>
+                        <span class="topic-tag">Business Partnership</span>
+                        <span class="topic-tag">Data Quality</span>
+                    </div>
+                    <a href="assets/FPA_Outlook_2026.pdf" class="btn btn-primary btn-small" target="_blank">Download White Paper (PDF) →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <section class="cta-section">
         <div class="container">
             <h2>Let's build something together.</h2>
-            <p>I'm currently exploring FP&A and strategic finance opportunities in Little Rock and beyond.</p>
+            <p>I'm exploring FP&A and strategic finance opportunities in Little Rock and beyond.</p>
             <div class="cta-buttons">
                 <a href="mailto:seandillard@gmail.com" class="btn btn-primary">seandillard@gmail.com</a>
                 <a href="https://www.linkedin.com/in/sean-dillard/" class="btn btn-secondary" target="_blank">Connect on LinkedIn</a>
