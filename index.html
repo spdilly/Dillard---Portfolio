@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sean Dillard | FP&A and Strategic Finance</title>
-    <meta name="description" content="Strategic finance professional combining Duke Mathematics, Stanford MBA, and BCG rigor. Specializing in driver-based planning, variance analysis, and FP&A transformation.">
+    <meta name="description" content="FP&A professional with BCG consulting background and Stanford MBA. Specializing in driver-based planning, variance analysis, rolling forecasts, and executive reporting.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -203,59 +203,50 @@
             color: var(--navy);
         }
         
-        .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.25);
-        }
+        .btn-primary:hover { background: var(--accent-light); }
         
         .btn-secondary {
             background: transparent;
             color: var(--white);
-            border: 1px solid var(--slate);
+            border: 1px solid var(--border);
         }
         
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent-light);
+        .btn-secondary:hover { border-color: var(--gray); }
+        
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
         }
         
-        .btn-small {
-            padding: 0.6rem 1.1rem;
-            font-size: 0.85rem;
+        .section-header {
+            margin-bottom: 3rem;
         }
-        
-        /* Section styles */
-        section { padding: 5rem 0; }
-        
-        .section-header { margin-bottom: 3rem; }
         
         .section-label {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.1em;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
             color: var(--accent);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
         
         .section-title {
             font-family: 'Fraunces', serif;
             font-size: clamp(1.75rem, 3vw, 2.25rem);
             font-weight: 600;
-            margin-bottom: 0.5rem;
         }
         
         .section-subtitle {
             color: var(--gray);
-            font-size: 1rem;
+            margin-top: 0.75rem;
             max-width: 600px;
         }
         
-        /* Case Studies */
+        /* Cases Grid */
         .cases-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 1.5rem;
         }
         
@@ -268,22 +259,19 @@
         }
         
         .case-card:hover {
-            transform: translateY(-4px);
             border-color: var(--accent);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            transform: translateY(-4px);
         }
         
         .case-image {
             width: 100%;
             height: 200px;
             object-fit: cover;
-            filter: brightness(0.8);
-            transition: filter 0.3s;
         }
         
-        .case-card:hover .case-image { filter: brightness(1); }
-        
-        .case-content { padding: 1.5rem; }
+        .case-content {
+            padding: 1.5rem;
+        }
         
         .case-tags {
             display: flex;
@@ -296,15 +284,15 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            padding: 0.25rem 0.5rem;
+            color: var(--accent);
             background: rgba(16, 185, 129, 0.1);
-            color: var(--accent-light);
+            padding: 0.25rem 0.5rem;
             border-radius: 4px;
         }
         
         .case-title {
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
         
@@ -317,15 +305,10 @@
         .case-link {
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--accent);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
+            color: var(--accent-light);
         }
         
-        .case-link:hover { color: var(--accent-light); }
-        
-        /* Skills */
+        /* Skills Section */
         .skills-section {
             background: var(--navy-light);
             border-top: 1px solid var(--border);
@@ -334,7 +317,7 @@
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
         }
         
@@ -342,45 +325,38 @@
             padding: 1.5rem;
             background: var(--navy);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: border-color 0.2s;
+            border-radius: 10px;
         }
         
-        .skill-card:hover { border-color: var(--accent); }
-        
         .skill-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(16, 185, 129, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
         }
         
         .skill-card h4 {
             font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
         
         .skill-card p {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray);
         }
         
-        /* White Paper CTA */
+        /* Whitepaper Section */
         .whitepaper-section {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
-            border-top: 1px solid rgba(16, 185, 129, 0.2);
-            border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 4rem 0;
         }
         
         .whitepaper-card {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 16px;
+            padding: 2.5rem;
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 3rem;
+            gap: 2rem;
             align-items: center;
         }
         
@@ -390,10 +366,20 @@
             margin-bottom: 0.75rem;
         }
         
+        .free-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: var(--accent);
+            color: var(--navy);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        
         .whitepaper-content p {
             color: var(--gray);
             margin-bottom: 1rem;
-            max-width: 550px;
         }
         
         .whitepaper-topics {
@@ -405,32 +391,22 @@
         
         .topic-tag {
             font-size: 0.75rem;
+            color: var(--accent-light);
+            background: rgba(16, 185, 129, 0.15);
             padding: 0.3rem 0.6rem;
-            background: var(--navy);
-            border: 1px solid var(--border);
             border-radius: 4px;
-            color: var(--gray);
         }
         
-        .free-badge {
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            background: rgba(16, 185, 129, 0.15);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent-light);
-            margin-left: 0.5rem;
-            vertical-align: middle;
+        .btn-small {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.85rem;
         }
         
         /* CTA Section */
         .cta-section {
             text-align: center;
             padding: 6rem 0;
+            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
         }
         
         .cta-section h2 {
@@ -441,8 +417,7 @@
         
         .cta-section p {
             color: var(--gray);
-            max-width: 500px;
-            margin: 0 auto 2rem;
+            margin-bottom: 2rem;
         }
         
         .cta-buttons {
@@ -454,7 +429,7 @@
         
         /* Footer */
         footer {
-            padding: 3rem 0;
+            padding: 2rem 0;
             border-top: 1px solid var(--border);
         }
         
@@ -527,11 +502,11 @@
             <a href="index.html" class="logo">Sean Dillard</a>
             <button class="mobile-toggle">☰</button>
             <ul class="nav-links">
-                <li><a href="#work">Work</a></li>
-                <li><a href="#skills">Skills</a></li>
+                <li><a href="#work">Case Studies</a></li>
+                <li><a href="#skills">Capabilities</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a></li>
-                <li><a href="mailto:seandillard@gmail.com" class="nav-cta">Get in Touch</a></li>
+                <li><a href="mailto:seandillard@gmail.com" class="nav-cta">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -539,18 +514,18 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">Available for FP&A & Finance Roles</div>
-                <h1>I build models that <span class="highlight">drive decisions</span> and forecasts that <span class="highlight">actually work.</span></h1>
-                <p class="hero-subtitle">Strategy consulting rigor meets hands-on execution. Driver-based planning, variance analysis that surfaces the "so what," and the judgment to know when AI helps forecasting—and when it doesn't.</p>
+                <div class="hero-badge">Open to FP&A & Strategic Finance Roles</div>
+                <h1>Financial planning and analysis with <span class="highlight">consulting discipline.</span></h1>
+                <p class="hero-subtitle">I build driver-based forecasts, variance bridges, and scenario models that support executive decision-making. BCG training applied to operating cadence work—with clear assumptions and traceable outputs.</p>
                 <div class="hero-credentials">
                     <span class="credential"><strong>Duke</strong> Mathematics</span>
                     <span class="credential"><strong>Stanford</strong> MBA</span>
                     <span class="credential"><strong>BCG</strong> Consulting</span>
-                    <span class="credential"><strong>Red Ventures</strong> $15M Product</span>
+                    <span class="credential"><strong>Red Ventures</strong> $15M P&L</span>
                 </div>
                 <div class="hero-cta">
-                    <a href="#work" class="btn btn-primary">View Case Studies →</a>
-                    <a href="assets/Resume.pdf" class="btn btn-secondary" target="_blank">Resume (PDF)</a>
+                    <a href="#work" class="btn btn-primary">Case Studies</a>
+                    <a href="assets/Resume.pdf" class="btn btn-secondary" target="_blank">Resume</a>
                 </div>
             </div>
         </div>
@@ -559,7 +534,7 @@
     <section id="work">
         <div class="container">
             <div class="section-header">
-                <p class="section-label">Case Studies</p>
+                <p class="section-label">Portfolio</p>
                 <h2 class="section-title">Selected Work</h2>
             </div>
             
@@ -568,12 +543,12 @@
                     <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=360&fit=crop&q=75" alt="Healthcare" class="case-image">
                     <div class="case-content">
                         <div class="case-tags">
-                            <span class="tag">Variance</span>
+                            <span class="tag">Variance Analysis</span>
                             <span class="tag">Scenarios</span>
                         </div>
                         <h3 class="case-title">Behavioral Health Operating Review</h3>
-                        <p class="case-desc">Full-year variance analysis with revenue and EBITDA bridges, scenario modeling, and strategic recommendations.</p>
-                        <span class="case-link">View Case →</span>
+                        <p class="case-desc">Full-year variance analysis with revenue and EBITDA bridges, three-scenario model, and board-ready recommendations for a $5M behavioral health operator.</p>
+                        <span class="case-link">View Case Study →</span>
                     </div>
                 </a>
                 
@@ -585,8 +560,8 @@
                             <span class="tag">Segmentation</span>
                         </div>
                         <h3 class="case-title">Pricing Sensitivity & Segmentation</h3>
-                        <p class="case-desc">PPL pricing analysis with conversion funnel optimization, keyword segmentation, and geographic strategy.</p>
-                        <span class="case-link">View Case →</span>
+                        <p class="case-desc">Pay-per-lead pricing model with conversion funnel analysis, keyword segmentation, and tiered pricing structure. Identified $30K incremental revenue opportunity.</p>
+                        <span class="case-link">View Case Study →</span>
                     </div>
                 </a>
                 
@@ -598,8 +573,8 @@
                             <span class="tag">Process Design</span>
                         </div>
                         <h3 class="case-title">Rolling Forecast Implementation</h3>
-                        <p class="case-desc">Design and implementation of a rolling forecast process with driver-based logic and accuracy tracking.</p>
-                        <span class="case-link">View Case →</span>
+                        <p class="case-desc">Design and implementation of a rolling forecast process with driver-based logic, MAPE tracking, and bias correction mechanisms.</p>
+                        <span class="case-link">View Case Study →</span>
                     </div>
                 </a>
             </div>
@@ -610,40 +585,40 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Capabilities</p>
-                <h2 class="section-title">How I Work</h2>
-                <p class="section-subtitle">Every model tells a story. I connect operating metrics to P&L outcomes through driver-based logic.</p>
+                <h2 class="section-title">Core Deliverables</h2>
+                <p class="section-subtitle">Finance outputs built for decision support: forecasts with clear assumptions, variance analysis that isolates drivers, and reporting calibrated to executive needs.</p>
             </div>
             
             <div class="skills-grid">
                 <div class="skill-card">
                     <div class="skill-icon">📊</div>
-                    <h4>Driver-Based Modeling</h4>
-                    <p>Connect operational levers to financial outcomes. Models that flex with assumptions, not ones that break.</p>
+                    <h4>Driver-Based Planning</h4>
+                    <p>P&L and cash flow models structured around operational drivers. Assumptions are explicit and adjustable for scenario testing.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🎯</div>
                     <h4>Variance Analysis</h4>
-                    <p>Price/volume/mix decomposition that answers "why"—not just "what." Bridges that balance to the penny.</p>
+                    <p>Price, volume, and mix decomposition with reconciling bridges. Monthly and quarterly packages that isolate root causes and quantify impact.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🔮</div>
                     <h4>Rolling Forecasts</h4>
-                    <p>Continuous planning that adapts to reality. MAPE tracking, bias correction, and process design.</p>
+                    <p>Continuous planning processes with accuracy tracking (MAPE, bias). Designed for monthly refresh cycles and rapid re-forecasting.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">📈</div>
-                    <h4>Scenario Planning</h4>
-                    <p>Build models that answer "what if?" — not just "what happened." Stress testing that informs strategy.</p>
+                    <h4>Scenario Modeling</h4>
+                    <p>Multi-scenario frameworks with probability weighting where appropriate. Sensitivity analysis on key value drivers.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">⚡</div>
-                    <h4>Python & SQL</h4>
-                    <p>Automate the boring stuff. pandas, Power Query, and SQL for data at scale.</p>
+                    <h4>Data & Automation</h4>
+                    <p>Python, SQL, and Power Query for data consolidation and process automation. Excel-based models with clean architecture.</p>
                 </div>
                 <div class="skill-card">
                     <div class="skill-icon">🎤</div>
-                    <h4>Executive Communication</h4>
-                    <p>Pyramid principle storytelling. Insights that answer "so what?" before the CFO asks.</p>
+                    <h4>Executive Reporting</h4>
+                    <p>Board decks and management packs structured for decision-making. Clear takeaways supported by detailed backup.</p>
                 </div>
             </div>
         </div>
@@ -653,16 +628,16 @@
         <div class="container">
             <div class="whitepaper-card">
                 <div class="whitepaper-content">
-                    <h3>FP&A Outlook 2026 <span class="free-badge">Free</span></h3>
-                    <p>A practitioner's perspective on where the function is headed—from AI agents and continuous planning to the platform landscape and the skills that will matter most.</p>
+                    <h3>FP&A Outlook 2026 <span class="free-badge">PDF</span></h3>
+                    <p>A practitioner's perspective on where financial planning is headed—from AI applications in forecasting and continuous planning adoption to platform selection and evolving skill requirements.</p>
                     <div class="whitepaper-topics">
                         <span class="topic-tag">AI in FP&A</span>
-                        <span class="topic-tag">Rolling Forecasts</span>
+                        <span class="topic-tag">Continuous Planning</span>
                         <span class="topic-tag">Platform Landscape</span>
                         <span class="topic-tag">Business Partnership</span>
                         <span class="topic-tag">Data Quality</span>
                     </div>
-                    <a href="assets/FPA_Outlook_2026.pdf" class="btn btn-primary btn-small" target="_blank">Download White Paper (PDF) →</a>
+                    <a href="assets/FPA_Outlook_2026.pdf" class="btn btn-primary btn-small" target="_blank">Download White Paper</a>
                 </div>
             </div>
         </div>
@@ -670,11 +645,11 @@
     
     <section class="cta-section">
         <div class="container">
-            <h2>Let's build something together.</h2>
-            <p>I'm exploring FP&A and strategic finance opportunities in Little Rock and beyond.</p>
+            <h2>Open to Opportunities</h2>
+            <p>I'm exploring FP&A, strategic finance, and finance manager roles in Little Rock and remotely.</p>
             <div class="cta-buttons">
                 <a href="mailto:seandillard@gmail.com" class="btn btn-primary">seandillard@gmail.com</a>
-                <a href="https://www.linkedin.com/in/sean-dillard/" class="btn btn-secondary" target="_blank">Connect on LinkedIn</a>
+                <a href="https://www.linkedin.com/in/sean-dillard/" class="btn btn-secondary" target="_blank">LinkedIn</a>
             </div>
         </div>
     </section>

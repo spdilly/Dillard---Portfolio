@@ -1,10 +1,10 @@
-ec<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Behavioral Health Operating Review | Sean Dillard</title>
-  <meta name="description" content="FP&A case study: variance analysis, scenario modeling, and driver-based Excel model for behavioral health company.">
+  <meta name="description" content="FP&A case study: full-year variance analysis with revenue and EBITDA bridges, scenario modeling, and board-ready operating review.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -41,6 +41,9 @@ ec<!DOCTYPE html>
     .case-section li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;background:#22c55e;border-radius:1px}
     .case-section li strong{color:#fafafa;font-weight:500}
     
+    .tools-line{font-size:0.875rem;color:#71717a;margin-top:8px;padding:12px 16px;background:#18181b;border-radius:6px;border:1px solid #27272a}
+    .tools-line strong{color:#a1a1aa}
+    
     /* PDF */
     .pdf-wrap{background:#18181b;border:1px solid #27272a;border-radius:12px;overflow:hidden;margin:24px 0}
     .pdf-wrap iframe{width:100%;height:500px;border:none;display:block}
@@ -74,7 +77,7 @@ ec<!DOCTYPE html>
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">Sean Dillard</a>
       <ul class="nav-links">
-        <li><a href="index.html">Work</a></li>
+        <li><a href="index.html">Portfolio</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a></li>
       </ul>
@@ -83,7 +86,7 @@ ec<!DOCTYPE html>
 
   <section class="case-hero">
     <div class="wrap">
-      <div class="case-tags"><span>Variance Analysis</span><span>Scenarios</span><span>FP&A Model</span></div>
+      <div class="case-tags"><span>Variance Analysis</span><span>Scenario Modeling</span><span>Executive Reporting</span></div>
       <h1>Behavioral Health Operating Review</h1>
       <p class="case-meta">Simulated Company · Full Year Analysis · January 2025</p>
     </div>
@@ -93,44 +96,36 @@ ec<!DOCTYPE html>
     <div class="wrap">
       
       <section class="case-section">
-        <h2>Context</h2>
-        <p>Clearpath Behavioral Health is a simulated intensive outpatient program (IOP) operator in Arkansas with two clinic locations. The company missed its FY1 revenue budget by 6% and EBITDA by 15%, requiring analysis of root causes and strategic recommendations for FY2.</p>
-        <p>This case demonstrates the full FP&A toolkit: variance decomposition, driver-based modeling, scenario analysis, and executive-ready reporting.</p>
+        <h2>Context & Objective</h2>
+        <p>Clearpath Behavioral Health is a simulated intensive outpatient program operator in Arkansas with two clinic locations and approximately $5M in annual revenue. The company missed its FY1 revenue budget by 6% and EBITDA by 15%.</p>
+        <p>The objective was to identify root causes through variance decomposition, model recovery scenarios, and deliver a board-ready operating review with quantified recommendations.</p>
       </section>
 
       <section class="case-section">
-        <h2>Problem</h2>
+        <h2>What I Did</h2>
         <ul>
-          <li>Revenue missed budget by $296K (6%), driven by volume and payer mix headwinds</li>
-          <li>EBITDA margin compressed from 29.6% target to 26.8% actual</li>
-          <li>Leadership needed clarity on root causes and quantified path to recovery</li>
-          <li>Board requested scenario analysis with probability-weighted expectations</li>
-        </ul>
-      </section>
-
-      <section class="case-section">
-        <h2>Approach</h2>
-        <ul>
-          <li>Built driver-based P&L model connecting operating metrics (sessions, show rate, payer mix) to financial outcomes</li>
+          <li>Built a driver-based P&L model connecting operational metrics (sessions delivered, show rate, payer mix) to financial outcomes</li>
           <li>Decomposed revenue variance into volume, rate, and mix components with reconciling bridges</li>
-          <li>Constructed three scenarios (downside, base, upside) with explicit driver assumptions</li>
-          <li>Quantified four initiatives with defensible ROI calculations</li>
-          <li>Packaged findings in executive-ready operating review deck for board presentation</li>
+          <li>Constructed three scenarios (downside, base, upside) with explicit driver assumptions and probability weighting</li>
+          <li>Quantified four strategic initiatives with ROI calculations and implementation timelines</li>
+          <li>Packaged findings into an executive operating review deck structured for board presentation</li>
+          <li>Documented methodology and data generation approach for transparency</li>
         </ul>
+        <div class="tools-line"><strong>Tools:</strong> Excel (driver-based model, variance bridges), Python (data generation), PowerPoint</div>
       </section>
 
       <section class="case-section">
-        <h2>Key Findings</h2>
+        <h2>Results</h2>
         <ul>
-          <li><strong>Volume drove two-thirds of revenue miss:</strong> 1,018 fewer sessions delivered, split between admissions shortfall and show rate deterioration</li>
+          <li><strong>Volume drove two-thirds of revenue shortfall:</strong> 1,018 fewer sessions than plan, split between admissions shortfall and show rate deterioration</li>
           <li><strong>Payer mix shift reduced blended rate:</strong> 2-point drift toward Medicaid reduced average reimbursement by $5/session</li>
-          <li><strong>Cost discipline preserved margin:</strong> $75K favorable variance from delayed hiring offset 25% of revenue shortfall</li>
-          <li><strong>Show rate intervention offers highest ROI:</strong> 2-point improvement yields $40K EBITDA with minimal investment</li>
+          <li><strong>Cost discipline offset 25% of shortfall:</strong> $75K favorable variance from delayed hiring</li>
+          <li><strong>Show rate intervention identified as highest-ROI lever:</strong> 2-point improvement yields ~$40K EBITDA with minimal investment</li>
         </ul>
       </section>
 
       <section class="case-section">
-        <h2>Operating Review Deck</h2>
+        <h2>Operating Review</h2>
         <div class="pdf-wrap">
           <iframe src="assets/Clearpath_FY2025_Operating_Review.pdf" title="Operating Review"></iframe>
         </div>
@@ -149,7 +144,7 @@ ec<!DOCTYPE html>
           </a>
           <a href="assets/clearpath_raw_data.xlsx" class="dl-card" target="_blank">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            <div class="dl-card-text"><div class="dl-card-title">Raw Data Model</div><div class="dl-card-type">XLSX</div></div>
+            <div class="dl-card-text"><div class="dl-card-title">Data Model</div><div class="dl-card-type">XLSX</div></div>
           </a>
           <a href="assets/Methodology_Behind_The_Scenes.pdf" class="dl-card" target="_blank">
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
@@ -159,14 +154,14 @@ ec<!DOCTYPE html>
       </section>
 
       <section class="case-section">
-        <h2>Methodology Note</h2>
-        <p>Clearpath is a simulated company. The data was generated programmatically using Python to create a realistic but fictional behavioral health operator. All numbers derive from a small set of core assumptions that cascade through the model deterministically.</p>
-        <p>This ensures every variance bridge balances, every reconciliation foots, and the story coheres. Industry benchmarks for reimbursement rates, staffing ratios, and margins are based on real-world data from CMS fee schedules and healthcare M&A comps.</p>
+        <h2>Note on Data</h2>
+        <p>Clearpath is a simulated company. The underlying data was generated programmatically to create a realistic but fictional behavioral health operator. Reimbursement rates are based on CMS fee schedules; staffing ratios and margins reflect industry benchmarks from healthcare M&A comparables.</p>
+        <p>All variance bridges reconcile, and scenarios flow from explicit driver assumptions.</p>
       </section>
 
       <a href="index.html" class="back-link">
         <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
-        Back to Case Studies
+        Back to Portfolio
       </a>
     </div>
   </div>
@@ -174,7 +169,7 @@ ec<!DOCTYPE html>
   <footer>
     <div class="wrap">
       <div class="footer-inner">
-        <p class="footer-text">© 2025 Sean Dillard</p>
+        <p class="footer-text">© 2026 Sean Dillard</p>
         <div class="footer-links">
           <a href="mailto:seandillard@gmail.com">seandillard@gmail.com</a>
           <a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a>
