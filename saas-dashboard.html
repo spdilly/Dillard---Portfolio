@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NovaTech SaaS — CFO Dashboard | Sean Dillard</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.12.7/Recharts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F3EADB;font-family:'Roboto Condensed','Inter',sans-serif;color:#2F3437;-webkit-font-smoothing:antialiased}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState}=React;
+const {BarChart,Bar,AreaChart,Area,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer,Cell,ComposedChart,Line,ReferenceLine}=Recharts;
+
+const bg="#F3EADB",cBg="#FFFFFF",teal="#14B8A6",tealDk="#0E8F86",tealLt="#99F6E4",tealMu="rgba(20,184,166,0.08)",hd="#0C0D0F",bd="#2F3437",mu="#7A7D80",br="rgba(47,52,55,0.12)",gn="#059669",rd="#DC2626",am="#D97706",cTl="#14B8A6",cTlL="#5EEAD4",cGn="#059669",cRd="#DC2626",cAm="#D97706",cVi="#7C3AED",cSl="#94A3B8";
+const fK=v=>v>=1000?`${(v/1000).toFixed(1)}M`:`${v}K`;
+const tt={background:cBg,border:`1px solid ${br}`,borderRadius:8,fontSize:12,color:bd,boxShadow:"0 4px 12px rgba(0,0,0,0.06)",fontFamily:"'Roboto Condensed',sans-serif"};
+const ax={fill:mu,fontSize:11};
+
+const arrD=[{yr:"FY24A",beg:2400,nl:960,exp:192,ch:-288,end:3264},{yr:"FY25E",beg:3264,nl:1440,exp:392,ch:-326,end:4770},{yr:"FY26E",beg:4770,nl:2160,exp:716,ch:-382,end:7264},{yr:"FY27E",beg:7264,nl:2880,exp:1308,ch:-508,end:10943},{yr:"FY28E",beg:10943,nl:3600,exp:2189,ch:-657,end:16075}];
+const revD=[{yr:"FY24A",sub:2832,svc:227,gr:null},{yr:"FY25E",sub:4017,svc:281,gr:40.5},{yr:"FY26E",sub:6017,svc:361,gr:48.4},{yr:"FY27E",sub:9104,svc:455,gr:49.9},{yr:"FY28E",sub:13509,svc:540,gr:47.0}];
+const plD=[{yr:"FY24A",eb:-936,gm:72},{yr:"FY25E",eb:-559,gm:74},{yr:"FY26E",eb:0,gm:76},{yr:"FY27E",eb:1148,gm:78},{yr:"FY28E",eb:3091,gm:80}];
+const ueD=[{yr:"FY24A",cac:18,ltv:60.5,lc:3.4,pb:12.5,nrr:108},{yr:"FY25E",cac:16,ltv:82.9,lc:5.2,pb:9.3,nrr:112},{yr:"FY26E",cac:14.5,ltv:109.4,lc:7.5,pb:7.2,nrr:115},{yr:"FY27E",cac:13,ltv:140.4,lc:10.8,pb:5.6,nrr:118},{yr:"FY28E",cac:12,ltv:176,lc:14.7,pb:4.5,nrr:120}];
+const cfD=[{yr:"FY24A",cash:4667,fcf:-1041},{yr:"FY25E",cash:3801,fcf:-737},{yr:"FY26E",cash:28642,fcf:-160},{yr:"FY27E",cash:29620,fcf:978},{yr:"FY28E",cash:32430,fcf:2810}];
+const hcD=[{yr:"FY24A",eng:18,sal:10,mkt:5,cs:6,ga:6,rpe:68},{yr:"FY25E",eng:24,sal:14,mkt:7,cs:8,ga:7,rpe:72},{yr:"FY26E",eng:32,sal:18,mkt:9,cs:11,ga:8,rpe:82},{yr:"FY27E",eng:40,sal:22,mkt:11,cs:14,ga:9,rpe:100},{yr:"FY28E",eng:48,sal:26,mkt:13,cs:17,ga:10,rpe:123}];
+
+function KPI({label,value,sub,up,color=teal}){
+  return React.createElement("div",{style:{background:cBg,border:`1px solid ${br}`,borderRadius:10,padding:"20px 24px",flex:1,minWidth:160,boxShadow:"0 1px 4px rgba(0,0,0,0.04)"}},
+    React.createElement("div",{style:{fontSize:10,fontWeight:700,color:mu,letterSpacing:1.6,textTransform:"uppercase",marginBottom:8}},label),
+    React.createElement("div",{style:{fontSize:30,fontWeight:700,color:hd,lineHeight:1.1,fontFamily:"'Roboto Condensed',sans-serif"}},value),
+    sub&&React.createElement("div",{style:{fontSize:12,marginTop:6,color:up!=null?(up?gn:rd):mu,display:"flex",alignItems:"center",gap:4}},up!=null&&React.createElement("span",{style:{fontSize:10}},up?"\u25B2":"\u25BC")," ",sub),
+    React.createElement("div",{style:{height:3,borderRadius:2,marginTop:12,opacity:.7,background:`linear-gradient(90deg,${color},${tealLt})`}})
+  );
+}
+
+function Sec({children,title,sub,style={}}){
+  return React.createElement("div",{style:{background:cBg,border:`1px solid ${br}`,borderRadius:10,padding:24,boxShadow:"0 1px 4px rgba(0,0,0,0.04)",...style}},
+    React.createElement("div",{style:{marginBottom:18}},
+      React.createElement("h3",{style:{fontSize:16,fontWeight:700,color:hd,margin:0}},title),
+      sub&&React.createElement("p",{style:{fontSize:12,color:mu,margin:"4px 0 0"}},sub)
+    ),children
+  );
+}
+
+function Dashboard(){
+  const[v,setV]=useState("exec");
+  const tabs=[{id:"exec",l:"Executive Summary"},{id:"rev",l:"Revenue & ARR"},{id:"ue",l:"Unit Economics"},{id:"cf",l:"Cash & Runway"}];
+
+  return React.createElement("div",{style:{background:bg,minHeight:"100vh",fontFamily:"'Roboto Condensed','Inter',sans-serif",color:bd}},
+
+    React.createElement("div",{style:{padding:"28px 40px 0",borderBottom:`2px solid ${br}`}},
+      React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:20}},
+        React.createElement("div",null,
+          React.createElement("div",{style:{fontSize:11,fontWeight:700,color:teal,letterSpacing:2.5,textTransform:"uppercase",marginBottom:6}},"Fractional CFO Deliverable"),
+          React.createElement("h1",{style:{fontSize:28,fontWeight:700,color:hd,margin:0,lineHeight:1.2}},"NovaTech SaaS Inc."),
+          React.createElement("p",{style:{fontSize:13,color:mu,margin:"6px 0 0"}},"B2B Vertical SaaS \u00B7 Series A ($8M) \u00B7 FY2024A\u2013FY2028E \u00B7 Base Case")
+        ),
+        React.createElement("div",{style:{textAlign:"right"}},
+          React.createElement("div",{style:{fontSize:10,color:mu,letterSpacing:1.2}},"PREPARED BY"),
+          React.createElement("div",{style:{fontSize:14,fontWeight:700,color:hd,marginTop:3}},"Sean Dillard"),
+          React.createElement("div",{style:{fontSize:12,color:mu}},"Ex-BCG \u00B7 Stanford MBA")
+        )
+      ),
+      React.createElement("div",{style:{display:"flex",gap:2}},
+        tabs.map(t=>React.createElement("button",{key:t.id,onClick:()=>setV(t.id),style:{background:v===t.id?tealMu:"transparent",border:"none",borderBottom:v===t.id?`3px solid ${teal}`:"3px solid transparent",color:v===t.id?tealDk:mu,fontSize:13,fontWeight:v===t.id?700:500,padding:"10px 20px",cursor:"pointer",fontFamily:"'Roboto Condensed',sans-serif"}},t.l))
+      )
+    ),
+
+    React.createElement("div",{style:{padding:"28px 40px 40px"}},
+
+      v==="exec"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"Ending ARR",value:"$16.1M",sub:"393% growth from FY24",up:true}),
+          React.createElement(KPI,{label:"Total Revenue",value:"$14.0M",sub:"47% YoY growth",up:true,color:gn}),
+          React.createElement(KPI,{label:"LTV / CAC",value:"14.7x",sub:"From 3.4x in FY24",up:true,color:cAm}),
+          React.createElement(KPI,{label:"EBITDA Margin",value:"22.0%",sub:"Breakeven FY26",up:true,color:gn}),
+          React.createElement(KPI,{label:"Cash Position",value:"$32.4M",sub:"CF+ from FY27",up:true})
+        ),
+        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:20}},
+          React.createElement(Sec,{title:"Revenue Trajectory",sub:"Subscription + Services ($K)"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:230},
+              React.createElement(ComposedChart,{data:revD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,tickFormatter:v=>`${v}%`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"sub",stackId:"a",fill:cTl,name:"Subscription"}),
+                React.createElement(Bar,{dataKey:"svc",stackId:"a",fill:cTlL,name:"Services",radius:[4,4,0,0]}),
+                React.createElement(Line,{type:"monotone",dataKey:"gr",stroke:cGn,strokeWidth:2.5,dot:{fill:cGn,r:3.5,strokeWidth:0},yAxisId:"r",name:"YoY Growth %",connectNulls:false})
+              )
+            )
+          ),
+          React.createElement(Sec,{title:"EBITDA Bridge",sub:"Path to profitability ($K)"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:230},
+              React.createElement(ComposedChart,{data:plD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,tickFormatter:v=>`${v}%`,domain:[0,100]}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(ReferenceLine,{y:0,stroke:mu,strokeDasharray:"3 3"}),
+                React.createElement(Bar,{dataKey:"eb",name:"EBITDA ($K)",radius:[4,4,4,4]},plD.map((d,i)=>React.createElement(Cell,{key:i,fill:d.eb>=0?cGn:cRd,opacity:.8}))),
+                React.createElement(Line,{type:"monotone",dataKey:"gm",stroke:cAm,strokeWidth:2.5,dot:{fill:cAm,r:3.5,strokeWidth:0},yAxisId:"r",name:"Gross Margin %"})
+              )
+            )
+          )
+        ),
+        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20}},
+          React.createElement(Sec,{title:"LTV/CAC & Payback",sub:"Improving efficiency at scale"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:210},
+              React.createElement(ComposedChart,{data:ueD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`${v}x`}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,reversed:true,domain:[0,16],tickFormatter:v=>`${v}mo`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"lc",fill:cTl,name:"LTV/CAC (x)",radius:[4,4,0,0],opacity:.8}),
+                React.createElement(Line,{type:"monotone",dataKey:"pb",stroke:cAm,strokeWidth:2.5,dot:{fill:cAm,r:3.5,strokeWidth:0},yAxisId:"r",name:"Payback (mo)"})
+              )
+            )
+          ),
+          React.createElement(Sec,{title:"Team Growth & Productivity",sub:"Headcount with revenue efficiency"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:210},
+              React.createElement(ComposedChart,{data:hcD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,tickFormatter:v=>`$${v}K`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"eng",stackId:"a",fill:cTl,name:"Engineering"}),
+                React.createElement(Bar,{dataKey:"sal",stackId:"a",fill:cGn,name:"Sales"}),
+                React.createElement(Bar,{dataKey:"mkt",stackId:"a",fill:cAm,name:"Marketing"}),
+                React.createElement(Bar,{dataKey:"cs",stackId:"a",fill:cVi,name:"CS"}),
+                React.createElement(Bar,{dataKey:"ga",stackId:"a",fill:cSl,name:"G&A",radius:[4,4,0,0]}),
+                React.createElement(Line,{type:"monotone",dataKey:"rpe",stroke:cRd,strokeWidth:2.5,dot:{fill:cRd,r:3.5,strokeWidth:0},yAxisId:"r",name:"Rev/Emp ($K)"})
+              )
+            )
+          )
+        )
+      ),
+
+      v==="rev"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"FY28E Ending ARR",value:"$16.1M",sub:"4.9x growth",up:true}),
+          React.createElement(KPI,{label:"Net New ARR",value:"$5.1M",sub:"Largest addition",up:true,color:gn}),
+          React.createElement(KPI,{label:"NRR (FY28)",value:"120%",sub:"Best-in-class",up:true,color:cAm}),
+          React.createElement(KPI,{label:"Gross Churn",value:"6.0%",sub:"From 12% in FY24",up:true,color:gn})
+        ),
+        React.createElement(Sec,{title:"ARR Waterfall",sub:"Beg ARR + New Logo + Expansion - Churn = End ARR ($K)",style:{marginBottom:20}},
+          React.createElement(ResponsiveContainer,{width:"100%",height:290},
+            React.createElement(BarChart,{data:arrD,barCategoryGap:"18%"},
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(Bar,{dataKey:"beg",fill:cSl,name:"Beginning ARR",opacity:.5}),
+              React.createElement(Bar,{dataKey:"nl",fill:cTl,name:"New Logo ARR"}),
+              React.createElement(Bar,{dataKey:"exp",fill:cGn,name:"Expansion ARR"}),
+              React.createElement(Bar,{dataKey:"ch",fill:cRd,name:"Churned ARR",radius:[4,4,0,0],opacity:.8})
+            )
+          )
+        ),
+        React.createElement(Sec,{title:"ARR Growth Curve",sub:"Ending ARR trajectory ($K)"},
+          React.createElement(ResponsiveContainer,{width:"100%",height:250},
+            React.createElement(AreaChart,{data:arrD},
+              React.createElement("defs",null,React.createElement("linearGradient",{id:"ag",x1:0,y1:0,x2:0,y2:1},React.createElement("stop",{offset:"5%",stopColor:cTl,stopOpacity:.2}),React.createElement("stop",{offset:"95%",stopColor:cTl,stopOpacity:.02}))),
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(Area,{type:"monotone",dataKey:"end",stroke:cTl,strokeWidth:3,fill:"url(#ag)",name:"Ending ARR",dot:{fill:cTl,r:5,strokeWidth:2,stroke:cBg}})
+            )
+          )
+        )
+      ),
+
+      v==="ue"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"LTV (FY28)",value:"$176K",sub:"2.9x from FY24",up:true}),
+          React.createElement(KPI,{label:"CAC (FY28)",value:"$12K",sub:"33% reduction",up:true,color:gn}),
+          React.createElement(KPI,{label:"LTV/CAC",value:"14.7x",sub:"Above 3x benchmark",up:true,color:cAm}),
+          React.createElement(KPI,{label:"Payback",value:"4.5 mo",sub:"From 12.5mo",up:true,color:gn})
+        ),
+        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:20}},
+          React.createElement(Sec,{title:"LTV vs CAC",sub:"LTV expanding, CAC compressing ($K)"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:250},
+              React.createElement(ComposedChart,{data:ueD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`$${v}K`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"ltv",fill:cTl,name:"LTV ($K)",radius:[4,4,0,0],opacity:.8}),
+                React.createElement(Line,{type:"monotone",dataKey:"cac",stroke:cRd,strokeWidth:3,dot:{fill:cRd,r:5,strokeWidth:2,stroke:cBg},name:"CAC ($K)"})
+              )
+            )
+          ),
+          React.createElement(Sec,{title:"CAC Payback Trend",sub:"Months to recover acquisition cost"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:250},
+              React.createElement(BarChart,{data:ueD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`${v}mo`,reversed:true,domain:[0,16]}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(ReferenceLine,{y:12,stroke:cAm,strokeDasharray:"5 3",label:{value:"12mo target",fill:cAm,fontSize:11,position:"right"}}),
+                React.createElement(Bar,{dataKey:"pb",name:"Payback (mo)",radius:[4,4,4,4]},ueD.map((d,i)=>React.createElement(Cell,{key:i,fill:d.pb<=12?cGn:cAm,opacity:.8})))
+              )
+            )
+          )
+        ),
+        React.createElement(Sec,{title:"NRR Trajectory",sub:"Net Revenue Retention drives expansion economics"},
+          React.createElement(ResponsiveContainer,{width:"100%",height:210},
+            React.createElement(AreaChart,{data:ueD},
+              React.createElement("defs",null,React.createElement("linearGradient",{id:"ng",x1:0,y1:0,x2:0,y2:1},React.createElement("stop",{offset:"5%",stopColor:cGn,stopOpacity:.15}),React.createElement("stop",{offset:"95%",stopColor:cGn,stopOpacity:.02}))),
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`${v}%`,domain:[100,130]}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(ReferenceLine,{y:110,stroke:mu,strokeDasharray:"5 3",label:{value:"Good",fill:mu,fontSize:10}}),
+              React.createElement(ReferenceLine,{y:120,stroke:cGn,strokeDasharray:"5 3",label:{value:"Best-in-class",fill:cGn,fontSize:10}}),
+              React.createElement(Area,{type:"monotone",dataKey:"nrr",stroke:cGn,strokeWidth:3,fill:"url(#ng)",name:"NRR %",dot:{fill:cGn,r:5,strokeWidth:2,stroke:cBg}})
+            )
+          )
+        )
+      ),
+
+      v==="cf"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"Ending Cash",value:"$32.4M",sub:"Post-Series B + CF",up:true}),
+          React.createElement(KPI,{label:"FCF (FY28)",value:"$2.8M",sub:"CF+ from FY27",up:true,color:gn}),
+          React.createElement(KPI,{label:"Series B",value:"$25M",sub:"Modeled FY2026E",color:teal}),
+          React.createElement(KPI,{label:"Runway",value:"CF+",sub:"Self-sustaining FY27",up:true,color:gn})
+        ),
+        React.createElement(Sec,{title:"Cash Position",sub:"Ending cash with Series B capital event ($K)",style:{marginBottom:20}},
+          React.createElement(ResponsiveContainer,{width:"100%",height:270},
+            React.createElement(AreaChart,{data:cfD},
+              React.createElement("defs",null,React.createElement("linearGradient",{id:"cg",x1:0,y1:0,x2:0,y2:1},React.createElement("stop",{offset:"5%",stopColor:cTl,stopOpacity:.2}),React.createElement("stop",{offset:"95%",stopColor:cTl,stopOpacity:.02}))),
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(Area,{type:"monotone",dataKey:"cash",stroke:cTl,strokeWidth:3,fill:"url(#cg)",name:"Ending Cash ($K)",dot:{fill:cTl,r:6,strokeWidth:2,stroke:cBg}})
+            )
+          )
+        ),
+        React.createElement(Sec,{title:"FCF Trajectory",sub:"Free cash flow turning positive ($K)"},
+          React.createElement(ResponsiveContainer,{width:"100%",height:230},
+            React.createElement(BarChart,{data:cfD},
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(ReferenceLine,{y:0,stroke:mu,strokeDasharray:"3 3"}),
+              React.createElement(Bar,{dataKey:"fcf",name:"FCF ($K)",radius:[4,4,4,4]},cfD.map((d,i)=>React.createElement(Cell,{key:i,fill:d.fcf>=0?cGn:cRd,opacity:.8})))
+            )
+          )
+        )
+      ),
+
+      React.createElement("div",{style:{marginTop:32,paddingTop:16,borderTop:`1px solid ${br}`,display:"flex",justifyContent:"space-between"}},
+        React.createElement("span",{style:{fontSize:11,color:mu}},"Confidential \u00B7 Sample data \u00B7 Base case"),
+        React.createElement("span",{style:{fontSize:11,color:mu}},"seandillard.com \u00B7 Ex-BCG \u00B7 Stanford MBA")
+      )
+    )
+  );
+}
+
+ReactDOM.render(React.createElement(Dashboard),document.getElementById("root"));
+</script>
+</body>
+</html>
