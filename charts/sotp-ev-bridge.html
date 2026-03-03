@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SOTP EV Bridge | Sean Dillard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F3EADB;font-family:Roboto Condensed,Inter,sans-serif;color:#2F3437;-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px}
+.panel{background:#fff;border:1px solid rgba(47,52,55,0.10);border-radius:12px;padding:32px 36px 28px;max-width:920px;width:100%;box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+.panel-tag{font-size:10px;font-weight:700;color:#14B8A6;letter-spacing:2.2px;text-transform:uppercase;margin-bottom:4px}
+.panel-title{font-size:20px;font-weight:700;color:#0C0D0F;line-height:1.2;margin-bottom:2px}
+.panel-sub{font-size:12px;color:#7A7D80}
+.legend-row{display:flex;gap:20px;margin:14px 0 8px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#7A7D80}
+.legend-dot{width:10px;height:10px;border-radius:2px}
+.cw{position:relative;width:100%;height:370px}
+.sr{display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(47,52,55,0.10)}
+.si{flex:1;text-align:center}
+.sl{font-size:9px;font-weight:700;color:#7A7D80;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:4px}
+.sv{font-size:22px;font-weight:700;color:#0C0D0F}
+.sv.tl{color:#0E8F86}
+.sv.rd{color:#DC2626}
+.fr{display:flex;justify-content:space-between;margin-top:14px;font-size:10px;color:#7A7D80}
+@media(max-width:700px){.cw{height:300px}.sv{font-size:18px}}</style>
+</head>
+<body>
+<div class="panel">
+  <div class="panel-tag">Sum-of-the-Parts Valuation</div>
+  <div class="panel-title">Enterprise Value Bridge</div>
+  <div class="panel-sub">Gross EV by sleeve &#8594; deductions &#8594; Net Equity Value ($mm)</div>
+  <div class="legend-row">
+    <div class="legend-item"><div class="legend-dot" style="background:#14B8A6"></div>Sleeve value</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#1E293B"></div>Subtotal / Total</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#DC2626"></div>Deductions</div>
+  </div>
+  <div class="cw"><canvas id="wf"></canvas></div>
+  <div class="sr">
+    <div class="si"><div class="sl">Gross Enterprise Value</div><div class="sv">$213.1mm</div></div>
+    <div class="si"><div class="sl">Net Liabilities</div><div class="sv rd">($13.5mm)</div></div>
+    <div class="si"><div class="sl">Net Equity Value</div><div class="sv tl">$199.6mm</div></div>
+    <div class="si"><div class="sl">Wtd Avg Life</div><div class="sv">5.21 yrs</div></div>
+  </div>
+  <div class="fr">
+    <span>Investment Platform Co. &#183; Confidential &#183; Base case</span>
+    <span>Sean Dillard &#183; Ex-BCG &#183; Stanford MBA</span>
+  </div>
+</div>
+<script>
+var DK="#1E293B",RD="#DC2626",MU="#7A7D80",BD="#2F3437";
+var sleeveCols=["#14B8A6","#0D9488","#0E8F86","#5EEAD4","#14B8A6"];
+Chart.defaults.font.family="Roboto Condensed,sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color=MU;
+
+var connPlugin={id:"conn",afterDatasetsDraw:function(ch){
+  var m=ch.getDatasetMeta(0);var ctx=ch.ctx;ctx.save();
+  ctx.strokeStyle="rgba(47,52,55,0.18)";ctx.lineWidth=1;ctx.setLineDash([3,3]);
+  function line(a,b,y){ctx.beginPath();ctx.moveTo(a,y);ctx.lineTo(b,y);ctx.stroke();}
+  for(var i=0;i<4;i++){
+    var b1=m.data[i],b2=m.data[i+1];
+    line(b1.x+b1.width/2+1,b2.x-b2.width/2-1,b1.y);
+  }
+  var b5=m.data[4],b6=m.data[5];
+  line(b5.x+b5.width/2+1,b6.x-b6.width/2-1,b5.y);
+  var b7=m.data[6];
+  line(b6.x+b6.width/2+1,b7.x-b7.width/2-1,b6.y);
+  var b8=m.data[7];
+  line(b7.x+b7.width/2+1,b8.x-b8.width/2-1,b7.base);
+  ctx.restore();
+}};
+Chart.register(connPlugin);
+
+var barData=[[0,44.3],[44.3,53.1],[53.1,122.5],[122.5,129.7],[129.7,213.1],[0,213.1],[199.6,213.1],[0,199.6]];
+var barCols=[sleeveCols[0],sleeveCols[1],sleeveCols[2],sleeveCols[3],sleeveCols[4],DK,RD,"#0E8F86"];
+var dispVals=["$44.3","$8.8","$69.4","$7.2","$83.4","$213.1","($13.5)","$199.6"];
+var pctVals=["20.8%","4.1%","32.6%","3.4%","39.1%","","",""];
+var lbls=["Fund-Level\n(Carry+GP)","SPV\nCarry","Long-Dur\nEquity","Pipeline","Corporate\nPlatform","GROSS\nEV","Net\nLiabilities","NET EQUITY\nVALUE"];
+
+new Chart(document.getElementById("wf"),{
+  type:"bar",
+  data:{labels:lbls,datasets:[{data:barData,backgroundColor:barCols,borderRadius:3,borderSkipped:false,barPercentage:0.72,categoryPercentage:0.85}]},
+  plugins:[ChartDataLabels],
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    layout:{padding:{top:28,bottom:4,left:4,right:4}},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        backgroundColor:"#fff",titleColor:BD,bodyColor:BD,
+        borderColor:"rgba(47,52,55,0.12)",borderWidth:1,cornerRadius:6,padding:10,
+        titleFont:{weight:"bold",size:12},bodyFont:{size:11},
+        callbacks:{
+          title:function(it){return it[0].label.replace(/\n/g," ")},
+          label:function(it){
+            var i=it.dataIndex;var v=dispVals[i];var p=pctVals[i];
+            if(p)return v+"mm ("+p+" of Gross EV)";
+            return v+"mm";
+          }
+        }
+      },
+      datalabels:{
+        anchor:function(ctx){return ctx.dataIndex===6?"start":"end"},
+        align:function(ctx){return ctx.dataIndex===6?"bottom":"top"},
+        offset:4,
+        color:function(ctx){var i=ctx.dataIndex;if(i===5||i===7)return DK;if(i===6)return RD;return BD},
+        font:{weight:"bold",size:12,family:"Roboto Condensed,sans-serif"},
+        formatter:function(val,ctx){return dispVals[ctx.dataIndex]+"mm"}
+      }
+    },
+    scales:{
+      x:{grid:{display:false},ticks:{font:{size:10},color:function(ctx){var i=ctx.index;if(i===5||i===7)return DK;if(i===6)return RD;return MU},maxRotation:0,autoSkip:false}},
+      y:{beginAtZero:true,max:250,grid:{color:"rgba(47,52,55,0.05)",drawTicks:false},ticks:{callback:function(v){return"$"+v+"mm"},padding:8,font:{size:10}}}
+    }
+  }
+});
+</script>
+</body>
+</html>
