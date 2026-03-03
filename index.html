@@ -1,682 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sean Dillard | FP&A and Strategic Finance</title>
-    <meta name="description" content="FP&A professional with BCG consulting background and Stanford MBA. Specializing in driver-based planning, variance analysis, rolling forecasts, and executive reporting.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy: #0f172a;
-            --navy-light: #1e293b;
-            --slate: #334155;
-            --accent: #10b981;
-            --accent-light: #34d399;
-            --white: #f8fafc;
-            --gray: #94a3b8;
-            --border: rgba(255,255,255,0.08);
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background: var(--navy);
-            color: var(--white);
-            line-height: 1.6;
-        }
-        
-        a { color: inherit; text-decoration: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 1rem 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        nav .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: 'Fraunces', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--gray);
-            transition: color 0.2s;
-        }
-        
-        .nav-links a:hover { color: var(--accent-light); }
-        
-        .nav-cta {
-            padding: 0.5rem 1rem;
-            background: var(--accent);
-            color: var(--navy) !important;
-            border-radius: 6px;
-            font-weight: 600;
-        }
-        
-        .nav-cta:hover { background: var(--accent-light); }
-        
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 8rem 0 6rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 60%;
-            height: 100%;
-            background: radial-gradient(ellipse at 70% 30%, rgba(16, 185, 129, 0.12) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .hero-content { position: relative; z-index: 1; }
-        
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 0.8rem;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--accent-light);
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        
-        .hero h1 {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-        }
-        
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.15rem;
-            color: var(--gray);
-            max-width: 580px;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-        
-        .hero-credentials {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 2rem;
-        }
-        
-        .credential {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.4rem 0.8rem;
-            background: var(--navy-light);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-        
-        .credential strong { color: var(--white); font-weight: 500; }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.875rem 1.5rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: var(--navy);
-        }
-        
-        .btn-primary:hover { background: var(--accent-light); }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover { border-color: var(--gray); }
-        
-        /* Section Styling */
-        section {
-            padding: 5rem 0;
-        }
-        
-        .section-header {
-            margin-bottom: 3rem;
-        }
-        
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-        
-        .section-title {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(1.75rem, 3vw, 2.25rem);
-            font-weight: 600;
-        }
-        
-        .section-subtitle {
-            color: var(--gray);
-            margin-top: 0.75rem;
-            max-width: 600px;
-        }
-        
-        /* Cases Grid */
-        .cases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .case-card {
-            background: var(--navy-light);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .case-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-        
-        .case-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .case-content {
-            padding: 1.5rem;
-        }
-        
-        .case-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .tag {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--accent);
-            background: rgba(16, 185, 129, 0.1);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-        }
-        
-        .case-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .case-desc {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-        
-        .case-link {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent-light);
-        }
-        
-        /* Skills Section */
-        .skills-section {
-            background: var(--navy-light);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .skill-card {
-            padding: 1.5rem;
-            background: var(--navy);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-        }
-        
-        .skill-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .skill-card h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .skill-card p {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        /* Whitepaper Section */
-        .whitepaper-section {
-            padding: 4rem 0;
-        }
-        
-        .whitepaper-card {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 16px;
-            padding: 2.5rem;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .whitepaper-content h3 {
-            font-family: 'Fraunces', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .free-badge {
-            font-size: 0.7rem;
-            font-weight: 600;
-            background: var(--accent);
-            color: var(--navy);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            margin-left: 0.5rem;
-            vertical-align: middle;
-        }
-        
-        .whitepaper-content p {
-            color: var(--gray);
-            margin-bottom: 1rem;
-        }
-        
-        .whitepaper-topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .topic-tag {
-            font-size: 0.75rem;
-            color: var(--accent-light);
-            background: rgba(16, 185, 129, 0.15);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-        }
-        
-        .btn-small {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.85rem;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            text-align: center;
-            padding: 6rem 0;
-            background: linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%);
-        }
-        
-        .cta-section h2 {
-            font-family: 'Fraunces', serif;
-            font-size: clamp(1.75rem, 3vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
-        
-        .cta-section p {
-            color: var(--gray);
-            margin-bottom: 2rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        /* Footer */
-        footer {
-            padding: 2rem 0;
-            border-top: 1px solid var(--border);
-        }
-        
-        footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        
-        .footer-left {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .footer-logo {
-            font-family: 'Fraunces', serif;
-            font-weight: 600;
-        }
-        
-        .footer-location {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-        
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-        
-        .footer-links a {
-            font-size: 0.85rem;
-            color: var(--gray);
-            transition: color 0.2s;
-        }
-        
-        .footer-links a:hover { color: var(--accent-light); }
-        
-        /* Mobile */
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-toggle { display: block; }
-            
-            .hero-cta { flex-direction: column; }
-            .btn { width: 100%; justify-content: center; }
-            
-            .cases-grid { grid-template-columns: 1fr; }
-            
-            .whitepaper-card {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NovaTech SaaS — CFO Dashboard | Sean Dillard</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.12.7/Recharts.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#F3EADB;font-family:'Roboto Condensed','Inter',sans-serif;color:#2F3437;-webkit-font-smoothing:antialiased}
+</style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <a href="index.html" class="logo">Sean Dillard</a>
-            <button class="mobile-toggle">☰</button>
-            <ul class="nav-links">
-                <li><a href="#work">Case Studies</a></li>
-                <li><a href="#skills">Capabilities</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a></li>
-                <li><a href="mailto:seandillard@gmail.com" class="nav-cta">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-    
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">Open to FP&A & Strategic Finance Roles</div>
-                <h1>Financial planning and analysis with <span class="highlight">consulting discipline.</span></h1>
-                <p class="hero-subtitle">I build driver-based forecasts, variance bridges, and scenario models that support executive decision-making. BCG training applied to operating cadence work—with clear assumptions and traceable outputs.</p>
-                <div class="hero-credentials">
-                    <span class="credential"><strong>Duke</strong> Mathematics</span>
-                    <span class="credential"><strong>Stanford</strong> MBA</span>
-                    <span class="credential"><strong>BCG</strong> Consulting</span>
-                    <span class="credential"><strong>Red Ventures</strong> $15M P&L</span>
-                </div>
-                <div class="hero-cta">
-                    <a href="#work" class="btn btn-primary">Case Studies</a>
-                    <a href="assets/Resume.pdf" class="btn btn-secondary" target="_blank">Resume</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section id="work">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Portfolio</p>
-                <h2 class="section-title">Selected Work</h2>
-            </div>
-            
-            <div class="cases-grid">
-                <a href="case-clearpath.html" class="case-card">
-                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=360&fit=crop&q=75" alt="Healthcare" class="case-image">
-                    <div class="case-content">
-                        <div class="case-tags">
-                            <span class="tag">Variance Analysis</span>
-                            <span class="tag">Scenarios</span>
-                        </div>
-                        <h3 class="case-title">Behavioral Health Operating Review</h3>
-                        <p class="case-desc">Full-year variance analysis with revenue and EBITDA bridges, three-scenario model, and board-ready recommendations for a $5M behavioral health operator.</p>
-                        <span class="case-link">View Case Study →</span>
-                    </div>
-                </a>
-                
-                <a href="case-pricing.html" class="case-card">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=360&fit=crop&q=75" alt="Analytics" class="case-image">
-                    <div class="case-content">
-                        <div class="case-tags">
-                            <span class="tag">Pricing</span>
-                            <span class="tag">Segmentation</span>
-                        </div>
-                        <h3 class="case-title">Pricing Sensitivity & Segmentation</h3>
-                        <p class="case-desc">Pay-per-lead pricing model with conversion funnel analysis, keyword segmentation, and tiered pricing structure. Identified $30K incremental revenue opportunity.</p>
-                        <span class="case-link">View Case Study →</span>
-                    </div>
-                </a>
-                
-                <a href="case-rolling-forecast.html" class="case-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=360&fit=crop&q=75" alt="Forecasting" class="case-image">
-                    <div class="case-content">
-                        <div class="case-tags">
-                            <span class="tag">Forecasting</span>
-                            <span class="tag">Process Design</span>
-                        </div>
-                        <h3 class="case-title">Rolling Forecast Implementation</h3>
-                        <p class="case-desc">Design and implementation of a rolling forecast process with driver-based logic, MAPE tracking, and bias correction mechanisms.</p>
-                        <span class="case-link">View Case Study →</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-    <section class="skills-section" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Capabilities</p>
-                <h2 class="section-title">Core Deliverables</h2>
-                <p class="section-subtitle">Finance outputs built for decision support: forecasts with clear assumptions, variance analysis that isolates drivers, and reporting calibrated to executive needs.</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">📊</div>
-                    <h4>Driver-Based Planning</h4>
-                    <p>P&L and cash flow models structured around operational drivers. Assumptions are explicit and adjustable for scenario testing.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎯</div>
-                    <h4>Variance Analysis</h4>
-                    <p>Price, volume, and mix decomposition with reconciling bridges. Monthly and quarterly packages that isolate root causes and quantify impact.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🔮</div>
-                    <h4>Rolling Forecasts</h4>
-                    <p>Continuous planning processes with accuracy tracking (MAPE, bias). Designed for monthly refresh cycles and rapid re-forecasting.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">📈</div>
-                    <h4>Scenario Modeling</h4>
-                    <p>Multi-scenario frameworks with probability weighting where appropriate. Sensitivity analysis on key value drivers.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">⚡</div>
-                    <h4>Data & Automation</h4>
-                    <p>Python, SQL, and Power Query for data consolidation and process automation. Excel-based models with clean architecture.</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🎤</div>
-                    <h4>Executive Reporting</h4>
-                    <p>Board decks and management packs structured for decision-making. Clear takeaways supported by detailed backup.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="whitepaper-section" id="outlook">
-        <div class="container">
-            <div class="whitepaper-card">
-                <div class="whitepaper-content">
-                    <h3>FP&A Outlook 2026 <span class="free-badge">PDF</span></h3>
-                    <p>A practitioner's perspective on where financial planning is headed—from AI applications in forecasting and continuous planning adoption to platform selection and evolving skill requirements.</p>
-                    <div class="whitepaper-topics">
-                        <span class="topic-tag">AI in FP&A</span>
-                        <span class="topic-tag">Continuous Planning</span>
-                        <span class="topic-tag">Platform Landscape</span>
-                        <span class="topic-tag">Business Partnership</span>
-                        <span class="topic-tag">Data Quality</span>
-                    </div>
-                    <a href="assets/FPA_Outlook_2026.pdf" class="btn btn-primary btn-small" target="_blank">Download White Paper</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <section class="cta-section">
-        <div class="container">
-            <h2>Open to Opportunities</h2>
-            <p>I'm exploring FP&A, strategic finance, and finance manager roles in Little Rock and remotely.</p>
-            <div class="cta-buttons">
-                <a href="mailto:seandillard@gmail.com" class="btn btn-primary">seandillard@gmail.com</a>
-                <a href="https://www.linkedin.com/in/sean-dillard/" class="btn btn-secondary" target="_blank">LinkedIn</a>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <div class="footer-left">
-                <span class="footer-logo">SD</span>
-                <span class="footer-location">Little Rock, AR</span>
-            </div>
-            <div class="footer-links">
-                <a href="mailto:seandillard@gmail.com">seandillard@gmail.com</a>
-                <a href="https://www.linkedin.com/in/sean-dillard/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/spdilly" target="_blank">GitHub</a>
-            </div>
-        </div>
-    </footer>
-    
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<div id="root"></div>
+<script type="text/babel">
+const {useState}=React;
+const {BarChart,Bar,AreaChart,Area,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer,Cell,ComposedChart,Line,ReferenceLine}=Recharts;
+
+const bg="#F3EADB",cBg="#FFFFFF",teal="#14B8A6",tealDk="#0E8F86",tealLt="#99F6E4",tealMu="rgba(20,184,166,0.08)",hd="#0C0D0F",bd="#2F3437",mu="#7A7D80",br="rgba(47,52,55,0.12)",gn="#059669",rd="#DC2626",am="#D97706",cTl="#14B8A6",cTlL="#5EEAD4",cGn="#059669",cRd="#DC2626",cAm="#D97706",cVi="#7C3AED",cSl="#94A3B8";
+const fK=v=>v>=1000?`${(v/1000).toFixed(1)}M`:`${v}K`;
+const tt={background:cBg,border:`1px solid ${br}`,borderRadius:8,fontSize:12,color:bd,boxShadow:"0 4px 12px rgba(0,0,0,0.06)",fontFamily:"'Roboto Condensed',sans-serif"};
+const ax={fill:mu,fontSize:11};
+
+const arrD=[{yr:"FY24A",beg:2400,nl:960,exp:192,ch:-288,end:3264},{yr:"FY25E",beg:3264,nl:1440,exp:392,ch:-326,end:4770},{yr:"FY26E",beg:4770,nl:2160,exp:716,ch:-382,end:7264},{yr:"FY27E",beg:7264,nl:2880,exp:1308,ch:-508,end:10943},{yr:"FY28E",beg:10943,nl:3600,exp:2189,ch:-657,end:16075}];
+const revD=[{yr:"FY24A",sub:2832,svc:227,gr:null},{yr:"FY25E",sub:4017,svc:281,gr:40.5},{yr:"FY26E",sub:6017,svc:361,gr:48.4},{yr:"FY27E",sub:9104,svc:455,gr:49.9},{yr:"FY28E",sub:13509,svc:540,gr:47.0}];
+const plD=[{yr:"FY24A",eb:-936,gm:72},{yr:"FY25E",eb:-559,gm:74},{yr:"FY26E",eb:0,gm:76},{yr:"FY27E",eb:1148,gm:78},{yr:"FY28E",eb:3091,gm:80}];
+const ueD=[{yr:"FY24A",cac:18,ltv:60.5,lc:3.4,pb:12.5,nrr:108},{yr:"FY25E",cac:16,ltv:82.9,lc:5.2,pb:9.3,nrr:112},{yr:"FY26E",cac:14.5,ltv:109.4,lc:7.5,pb:7.2,nrr:115},{yr:"FY27E",cac:13,ltv:140.4,lc:10.8,pb:5.6,nrr:118},{yr:"FY28E",cac:12,ltv:176,lc:14.7,pb:4.5,nrr:120}];
+const cfD=[{yr:"FY24A",cash:4667,fcf:-1041},{yr:"FY25E",cash:3801,fcf:-737},{yr:"FY26E",cash:28642,fcf:-160},{yr:"FY27E",cash:29620,fcf:978},{yr:"FY28E",cash:32430,fcf:2810}];
+const hcD=[{yr:"FY24A",eng:18,sal:10,mkt:5,cs:6,ga:6,rpe:68},{yr:"FY25E",eng:24,sal:14,mkt:7,cs:8,ga:7,rpe:72},{yr:"FY26E",eng:32,sal:18,mkt:9,cs:11,ga:8,rpe:82},{yr:"FY27E",eng:40,sal:22,mkt:11,cs:14,ga:9,rpe:100},{yr:"FY28E",eng:48,sal:26,mkt:13,cs:17,ga:10,rpe:123}];
+
+function KPI({label,value,sub,up,color=teal}){
+  return React.createElement("div",{style:{background:cBg,border:`1px solid ${br}`,borderRadius:10,padding:"20px 24px",flex:1,minWidth:160,boxShadow:"0 1px 4px rgba(0,0,0,0.04)"}},
+    React.createElement("div",{style:{fontSize:10,fontWeight:700,color:mu,letterSpacing:1.6,textTransform:"uppercase",marginBottom:8}},label),
+    React.createElement("div",{style:{fontSize:30,fontWeight:700,color:hd,lineHeight:1.1,fontFamily:"'Roboto Condensed',sans-serif"}},value),
+    sub&&React.createElement("div",{style:{fontSize:12,marginTop:6,color:up!=null?(up?gn:rd):mu,display:"flex",alignItems:"center",gap:4}},up!=null&&React.createElement("span",{style:{fontSize:10}},up?"\u25B2":"\u25BC")," ",sub),
+    React.createElement("div",{style:{height:3,borderRadius:2,marginTop:12,opacity:.7,background:`linear-gradient(90deg,${color},${tealLt})`}})
+  );
+}
+
+function Sec({children,title,sub,style={}}){
+  return React.createElement("div",{style:{background:cBg,border:`1px solid ${br}`,borderRadius:10,padding:24,boxShadow:"0 1px 4px rgba(0,0,0,0.04)",...style}},
+    React.createElement("div",{style:{marginBottom:18}},
+      React.createElement("h3",{style:{fontSize:16,fontWeight:700,color:hd,margin:0}},title),
+      sub&&React.createElement("p",{style:{fontSize:12,color:mu,margin:"4px 0 0"}},sub)
+    ),children
+  );
+}
+
+function Dashboard(){
+  const[v,setV]=useState("exec");
+  const tabs=[{id:"exec",l:"Executive Summary"},{id:"rev",l:"Revenue & ARR"},{id:"ue",l:"Unit Economics"},{id:"cf",l:"Cash & Runway"}];
+
+  return React.createElement("div",{style:{background:bg,minHeight:"100vh",fontFamily:"'Roboto Condensed','Inter',sans-serif",color:bd}},
+
+    React.createElement("div",{style:{padding:"28px 40px 0",borderBottom:`2px solid ${br}`}},
+      React.createElement("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:20}},
+        React.createElement("div",null,
+          React.createElement("div",{style:{fontSize:11,fontWeight:700,color:teal,letterSpacing:2.5,textTransform:"uppercase",marginBottom:6}},"Fractional CFO Deliverable"),
+          React.createElement("h1",{style:{fontSize:28,fontWeight:700,color:hd,margin:0,lineHeight:1.2}},"NovaTech SaaS Inc."),
+          React.createElement("p",{style:{fontSize:13,color:mu,margin:"6px 0 0"}},"B2B Vertical SaaS \u00B7 Series A ($8M) \u00B7 FY2024A\u2013FY2028E \u00B7 Base Case")
+        ),
+        React.createElement("div",{style:{textAlign:"right"}},
+          React.createElement("div",{style:{fontSize:10,color:mu,letterSpacing:1.2}},"PREPARED BY"),
+          React.createElement("div",{style:{fontSize:14,fontWeight:700,color:hd,marginTop:3}},"Sean Dillard"),
+          React.createElement("div",{style:{fontSize:12,color:mu}},"Ex-BCG \u00B7 Stanford MBA")
+        )
+      ),
+      React.createElement("div",{style:{display:"flex",gap:2}},
+        tabs.map(t=>React.createElement("button",{key:t.id,onClick:()=>setV(t.id),style:{background:v===t.id?tealMu:"transparent",border:"none",borderBottom:v===t.id?`3px solid ${teal}`:"3px solid transparent",color:v===t.id?tealDk:mu,fontSize:13,fontWeight:v===t.id?700:500,padding:"10px 20px",cursor:"pointer",fontFamily:"'Roboto Condensed',sans-serif"}},t.l))
+      )
+    ),
+
+    React.createElement("div",{style:{padding:"28px 40px 40px"}},
+
+      v==="exec"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"Ending ARR",value:"$16.1M",sub:"393% growth from FY24",up:true}),
+          React.createElement(KPI,{label:"Total Revenue",value:"$14.0M",sub:"47% YoY growth",up:true,color:gn}),
+          React.createElement(KPI,{label:"LTV / CAC",value:"14.7x",sub:"From 3.4x in FY24",up:true,color:cAm}),
+          React.createElement(KPI,{label:"EBITDA Margin",value:"22.0%",sub:"Breakeven FY26",up:true,color:gn}),
+          React.createElement(KPI,{label:"Cash Position",value:"$32.4M",sub:"CF+ from FY27",up:true})
+        ),
+        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:20}},
+          React.createElement(Sec,{title:"Revenue Trajectory",sub:"Subscription + Services ($K)"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:230},
+              React.createElement(ComposedChart,{data:revD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,tickFormatter:v=>`${v}%`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"sub",stackId:"a",fill:cTl,name:"Subscription"}),
+                React.createElement(Bar,{dataKey:"svc",stackId:"a",fill:cTlL,name:"Services",radius:[4,4,0,0]}),
+                React.createElement(Line,{type:"monotone",dataKey:"gr",stroke:cGn,strokeWidth:2.5,dot:{fill:cGn,r:3.5,strokeWidth:0},yAxisId:"r",name:"YoY Growth %",connectNulls:false})
+              )
+            )
+          ),
+          React.createElement(Sec,{title:"EBITDA Bridge",sub:"Path to profitability ($K)"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:230},
+              React.createElement(ComposedChart,{data:plD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,tickFormatter:v=>`${v}%`,domain:[0,100]}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(ReferenceLine,{y:0,stroke:mu,strokeDasharray:"3 3"}),
+                React.createElement(Bar,{dataKey:"eb",name:"EBITDA ($K)",radius:[4,4,4,4]},plD.map((d,i)=>React.createElement(Cell,{key:i,fill:d.eb>=0?cGn:cRd,opacity:.8}))),
+                React.createElement(Line,{type:"monotone",dataKey:"gm",stroke:cAm,strokeWidth:2.5,dot:{fill:cAm,r:3.5,strokeWidth:0},yAxisId:"r",name:"Gross Margin %"})
+              )
+            )
+          )
+        ),
+        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20}},
+          React.createElement(Sec,{title:"LTV/CAC & Payback",sub:"Improving efficiency at scale"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:210},
+              React.createElement(ComposedChart,{data:ueD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`${v}x`}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,reversed:true,domain:[0,16],tickFormatter:v=>`${v}mo`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"lc",fill:cTl,name:"LTV/CAC (x)",radius:[4,4,0,0],opacity:.8}),
+                React.createElement(Line,{type:"monotone",dataKey:"pb",stroke:cAm,strokeWidth:2.5,dot:{fill:cAm,r:3.5,strokeWidth:0},yAxisId:"r",name:"Payback (mo)"})
+              )
+            )
+          ),
+          React.createElement(Sec,{title:"Team Growth & Productivity",sub:"Headcount with revenue efficiency"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:210},
+              React.createElement(ComposedChart,{data:hcD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false}),
+                React.createElement(YAxis,{yAxisId:"r",orientation:"right",tick:ax,axisLine:false,tickFormatter:v=>`$${v}K`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"eng",stackId:"a",fill:cTl,name:"Engineering"}),
+                React.createElement(Bar,{dataKey:"sal",stackId:"a",fill:cGn,name:"Sales"}),
+                React.createElement(Bar,{dataKey:"mkt",stackId:"a",fill:cAm,name:"Marketing"}),
+                React.createElement(Bar,{dataKey:"cs",stackId:"a",fill:cVi,name:"CS"}),
+                React.createElement(Bar,{dataKey:"ga",stackId:"a",fill:cSl,name:"G&A",radius:[4,4,0,0]}),
+                React.createElement(Line,{type:"monotone",dataKey:"rpe",stroke:cRd,strokeWidth:2.5,dot:{fill:cRd,r:3.5,strokeWidth:0},yAxisId:"r",name:"Rev/Emp ($K)"})
+              )
+            )
+          )
+        )
+      ),
+
+      v==="rev"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"FY28E Ending ARR",value:"$16.1M",sub:"4.9x growth",up:true}),
+          React.createElement(KPI,{label:"Net New ARR",value:"$5.1M",sub:"Largest addition",up:true,color:gn}),
+          React.createElement(KPI,{label:"NRR (FY28)",value:"120%",sub:"Best-in-class",up:true,color:cAm}),
+          React.createElement(KPI,{label:"Gross Churn",value:"6.0%",sub:"From 12% in FY24",up:true,color:gn})
+        ),
+        React.createElement(Sec,{title:"ARR Waterfall",sub:"Beg ARR + New Logo + Expansion - Churn = End ARR ($K)",style:{marginBottom:20}},
+          React.createElement(ResponsiveContainer,{width:"100%",height:290},
+            React.createElement(BarChart,{data:arrD,barCategoryGap:"18%"},
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(Bar,{dataKey:"beg",fill:cSl,name:"Beginning ARR",opacity:.5}),
+              React.createElement(Bar,{dataKey:"nl",fill:cTl,name:"New Logo ARR"}),
+              React.createElement(Bar,{dataKey:"exp",fill:cGn,name:"Expansion ARR"}),
+              React.createElement(Bar,{dataKey:"ch",fill:cRd,name:"Churned ARR",radius:[4,4,0,0],opacity:.8})
+            )
+          )
+        ),
+        React.createElement(Sec,{title:"ARR Growth Curve",sub:"Ending ARR trajectory ($K)"},
+          React.createElement(ResponsiveContainer,{width:"100%",height:250},
+            React.createElement(AreaChart,{data:arrD},
+              React.createElement("defs",null,React.createElement("linearGradient",{id:"ag",x1:0,y1:0,x2:0,y2:1},React.createElement("stop",{offset:"5%",stopColor:cTl,stopOpacity:.2}),React.createElement("stop",{offset:"95%",stopColor:cTl,stopOpacity:.02}))),
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(Area,{type:"monotone",dataKey:"end",stroke:cTl,strokeWidth:3,fill:"url(#ag)",name:"Ending ARR",dot:{fill:cTl,r:5,strokeWidth:2,stroke:cBg}})
+            )
+          )
+        )
+      ),
+
+      v==="ue"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"LTV (FY28)",value:"$176K",sub:"2.9x from FY24",up:true}),
+          React.createElement(KPI,{label:"CAC (FY28)",value:"$12K",sub:"33% reduction",up:true,color:gn}),
+          React.createElement(KPI,{label:"LTV/CAC",value:"14.7x",sub:"Above 3x benchmark",up:true,color:cAm}),
+          React.createElement(KPI,{label:"Payback",value:"4.5 mo",sub:"From 12.5mo",up:true,color:gn})
+        ),
+        React.createElement("div",{style:{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20,marginBottom:20}},
+          React.createElement(Sec,{title:"LTV vs CAC",sub:"LTV expanding, CAC compressing ($K)"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:250},
+              React.createElement(ComposedChart,{data:ueD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`$${v}K`}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(Bar,{dataKey:"ltv",fill:cTl,name:"LTV ($K)",radius:[4,4,0,0],opacity:.8}),
+                React.createElement(Line,{type:"monotone",dataKey:"cac",stroke:cRd,strokeWidth:3,dot:{fill:cRd,r:5,strokeWidth:2,stroke:cBg},name:"CAC ($K)"})
+              )
+            )
+          ),
+          React.createElement(Sec,{title:"CAC Payback Trend",sub:"Months to recover acquisition cost"},
+            React.createElement(ResponsiveContainer,{width:"100%",height:250},
+              React.createElement(BarChart,{data:ueD},
+                React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+                React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+                React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`${v}mo`,reversed:true,domain:[0,16]}),
+                React.createElement(Tooltip,{contentStyle:tt}),
+                React.createElement(ReferenceLine,{y:12,stroke:cAm,strokeDasharray:"5 3",label:{value:"12mo target",fill:cAm,fontSize:11,position:"right"}}),
+                React.createElement(Bar,{dataKey:"pb",name:"Payback (mo)",radius:[4,4,4,4]},ueD.map((d,i)=>React.createElement(Cell,{key:i,fill:d.pb<=12?cGn:cAm,opacity:.8})))
+              )
+            )
+          )
+        ),
+        React.createElement(Sec,{title:"NRR Trajectory",sub:"Net Revenue Retention drives expansion economics"},
+          React.createElement(ResponsiveContainer,{width:"100%",height:210},
+            React.createElement(AreaChart,{data:ueD},
+              React.createElement("defs",null,React.createElement("linearGradient",{id:"ng",x1:0,y1:0,x2:0,y2:1},React.createElement("stop",{offset:"5%",stopColor:cGn,stopOpacity:.15}),React.createElement("stop",{offset:"95%",stopColor:cGn,stopOpacity:.02}))),
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:v=>`${v}%`,domain:[100,130]}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(ReferenceLine,{y:110,stroke:mu,strokeDasharray:"5 3",label:{value:"Good",fill:mu,fontSize:10}}),
+              React.createElement(ReferenceLine,{y:120,stroke:cGn,strokeDasharray:"5 3",label:{value:"Best-in-class",fill:cGn,fontSize:10}}),
+              React.createElement(Area,{type:"monotone",dataKey:"nrr",stroke:cGn,strokeWidth:3,fill:"url(#ng)",name:"NRR %",dot:{fill:cGn,r:5,strokeWidth:2,stroke:cBg}})
+            )
+          )
+        )
+      ),
+
+      v==="cf"&&React.createElement(React.Fragment,null,
+        React.createElement("div",{style:{display:"flex",gap:16,marginBottom:28,flexWrap:"wrap"}},
+          React.createElement(KPI,{label:"Ending Cash",value:"$32.4M",sub:"Post-Series B + CF",up:true}),
+          React.createElement(KPI,{label:"FCF (FY28)",value:"$2.8M",sub:"CF+ from FY27",up:true,color:gn}),
+          React.createElement(KPI,{label:"Series B",value:"$25M",sub:"Modeled FY2026E",color:teal}),
+          React.createElement(KPI,{label:"Runway",value:"CF+",sub:"Self-sustaining FY27",up:true,color:gn})
+        ),
+        React.createElement(Sec,{title:"Cash Position",sub:"Ending cash with Series B capital event ($K)",style:{marginBottom:20}},
+          React.createElement(ResponsiveContainer,{width:"100%",height:270},
+            React.createElement(AreaChart,{data:cfD},
+              React.createElement("defs",null,React.createElement("linearGradient",{id:"cg",x1:0,y1:0,x2:0,y2:1},React.createElement("stop",{offset:"5%",stopColor:cTl,stopOpacity:.2}),React.createElement("stop",{offset:"95%",stopColor:cTl,stopOpacity:.02}))),
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(Area,{type:"monotone",dataKey:"cash",stroke:cTl,strokeWidth:3,fill:"url(#cg)",name:"Ending Cash ($K)",dot:{fill:cTl,r:6,strokeWidth:2,stroke:cBg}})
+            )
+          )
+        ),
+        React.createElement(Sec,{title:"FCF Trajectory",sub:"Free cash flow turning positive ($K)"},
+          React.createElement(ResponsiveContainer,{width:"100%",height:230},
+            React.createElement(BarChart,{data:cfD},
+              React.createElement(CartesianGrid,{strokeDasharray:"3 3",stroke:"rgba(47,52,55,0.08)"}),
+              React.createElement(XAxis,{dataKey:"yr",tick:ax,axisLine:{stroke:br}}),
+              React.createElement(YAxis,{tick:ax,axisLine:false,tickFormatter:fK}),
+              React.createElement(Tooltip,{contentStyle:tt}),
+              React.createElement(ReferenceLine,{y:0,stroke:mu,strokeDasharray:"3 3"}),
+              React.createElement(Bar,{dataKey:"fcf",name:"FCF ($K)",radius:[4,4,4,4]},cfD.map((d,i)=>React.createElement(Cell,{key:i,fill:d.fcf>=0?cGn:cRd,opacity:.8})))
+            )
+          )
+        )
+      ),
+
+      React.createElement("div",{style:{marginTop:32,paddingTop:16,borderTop:`1px solid ${br}`,display:"flex",justifyContent:"space-between"}},
+        React.createElement("span",{style:{fontSize:11,color:mu}},"Confidential \u00B7 Sample data \u00B7 Base case"),
+        React.createElement("span",{style:{fontSize:11,color:mu}},"seandillard.com \u00B7 Ex-BCG \u00B7 Stanford MBA")
+      )
+    )
+  );
+}
+
+ReactDOM.render(React.createElement(Dashboard),document.getElementById("root"));
+</script>
 </body>
 </html>
